@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Modules;
+use App\Entity\Medias;
 use App\Form\ModulesType;
 use App\Repository\ModulesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,10 +37,32 @@ class ModulesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Je récupère les videos transmises
+            $videos = $form->get('medias')->getData();
+
+            // Je boucle sur les videos
+            foreach($videos as $video){
+                // Je génère un nouveau nom de fichier
+                $fichier = md5(uniqid()) . '.' . $video->guessExtension();
+
+                // Je copie le fichier dans le dossier uploads
+                $video->move(
+                    $this->getParameter('videos_directory'),
+                    $fichier
+                );
+
+                // Je stocke la video dans la BDD (nom du fichier)
+                $media= new Medias();
+                $media->setName($fichier);
+                $module->addMedia($media);
+
+            }
+
+
             $date = new \DateTimeImmutable('now');
-         
             $module->setCreatedBy($this->getUser()->getEmail());
-            $module->setUser($this->getUser());
+            $module->setUsers($this->getUser());
             $module->setCreatedAt($date);
             $modulesRepository->add($module);
             return $this->redirectToRoute('app_modules_index', [], Response::HTTP_SEE_OTHER);
