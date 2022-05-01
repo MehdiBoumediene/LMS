@@ -71,6 +71,12 @@ class Modules
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Medias::class, mappedBy="module", orphanRemoval=true, cascade={"persist"})
+     
+     */
+    private $medias;
+
 
 
    
@@ -82,6 +88,7 @@ class Modules
         $this->etudiants = new ArrayCollection();
         $this->absences = new ArrayCollection();
         $this->documents = new ArrayCollection();
+        $this->medias = new ArrayCollection();
         
     }
 
@@ -272,6 +279,36 @@ class Modules
     public function setUsers(?Users $users): self
     {
         $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Medias>
+     */
+    public function getMedias(): Collection
+    {
+        return $this->medias;
+    }
+
+    public function addMedia(Medias $media): self
+    {
+        if (!$this->medias->contains($media)) {
+            $this->medias[] = $media;
+            $media->setModule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMedia(Medias $media): self
+    {
+        if ($this->medias->removeElement($media)) {
+            // set the owning side to null (unless already changed)
+            if ($media->getModule() === $this) {
+                $media->setModule(null);
+            }
+        }
 
         return $this;
     }

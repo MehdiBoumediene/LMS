@@ -53,9 +53,6 @@
 									<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 								</a>
 								<ul>
-									<li><a href="{{path('app_classes_index')}}"{% if route_name == "app_classes_index" %} class="mm-active"{% elseif route_name == "app_classes_new" %} class="mm-active"{% elseif route_name == "app_classes_edit" %} class="mm-active"{% elseif route_name == "app_classes_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des classes<i class="metismenu-state-icon "></i></a></li>
-
-									<li><a href="{{path('app_blocs_index')}}"{% if route_name == "app_blocs_index" %} class="mm-active"{% elseif route_name == "app_blocs_new" %} class="mm-active"{% elseif route_name == "app_blocs_edit" %} class="mm-active"{% elseif route_name == "app_blocs_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des blocs<i class="metismenu-state-icon "></i></a></li>
 
 									<li><a href="{{path('app_modules_index')}}"{% if route_name == "app_modules_index" %} class="mm-active"{% elseif route_name == "app_modules_new" %} class="mm-active"{% elseif route_name == "app_modules_edit" %} class="mm-active"{% elseif route_name == "app_modules_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des modules<i class="metismenu-state-icon "></i></a></li>
 
@@ -65,25 +62,12 @@
 
 									<li><a href="{{path('app_entreprises_index')}}"{% if route_name == "app_entreprises_index" %} class="mm-active"{% elseif route_name == "app_entreprises_new" %} class="mm-active"{% elseif route_name == "app_entreprises_edit" %} class="mm-active"{% elseif route_name == "app_entreprises_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des entreprires<i class="metismenu-state-icon "></i></a></li>
 
-									<li><a href="{{path('app_tuteurs_index')}}"{% if route_name == "app_tuteurs_index" %} class="mm-active"{% elseif route_name == "app_tuteurs_new" %} class="mm-active"{% elseif route_name == "app_tuteurs_edit" %} class="mm-active"{% elseif route_name == "app_tuteurs_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des tuteurs<i class="metismenu-state-icon "></i></a></li>
 
 									<li><a href="{{path('app_users_index')}}"{% if route_name == "app_users_index" %} class="mm-active"{% elseif route_name == "app_users_new" %} class="mm-active"{% elseif route_name == "app_users_edit" %} class="mm-active"{% elseif route_name == "app_users_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Utilisateurs<i class="metismenu-state-icon "></i></a></li>
 
-									<li><a href="{{path('app_gestion_calendrier')}}"{% if route_name == "app_gestion_calendrier" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Calendrier <i class="metismenu-state-icon "></i></a></li>
 								</ul>
 							</li>
-							<li>
-								<a href="#">
-									<i class="metismenu-icon pe-7s-settings"></i>
-									Paramètres des rôles
-									<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-								</a>
-								<ul>
-									<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Liste des rôles<i class="metismenu-state-icon "></i></a></li>
-									<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Actions des rôles<i class="metismenu-state-icon "></i></a></li>
-
-								</ul>
-							</li>
+			
 						{% endif %}
 
 						{% else %}
@@ -99,32 +83,12 @@
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul>
-								<li><a href="{{path('app_calendrier_etudiant')}}"><i class="metismenu-icon pe-7s-display2"></i>Mon calendrier<i class="metismenu-state-icon "></i></a></li>
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mes absences<i class="metismenu-state-icon "></i></a></li>
+								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Liste des formations<i class="metismenu-state-icon "></i></a></li>
 
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mon parcours pro<i class="metismenu-state-icon "></i></a></li>
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mon stage en entreprise<i class="metismenu-state-icon "></i></a></li>
+								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mes formations<i class="metismenu-state-icon "></i></a></li>
 							</ul>
 						</li>
-
-
-						<li>
-							<a href="#">
-								<i class="metismenu-icon pe-7s-notebook"></i>Supports et cours
-							</a>
-						</li>
-
-						<li>
-							<a href="#">
-								<i class="metismenu-icon lnr-pie-chart"></i>Progression et résultat
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="metismenu-icon pe-7s-note2"></i>
-								Mes projets
-							</a>
-						</li>
+>
 
 						{% else %}
 
@@ -140,34 +104,11 @@
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul>
-								<li><a href="{{path('app_calendrier_etudiant')}}"><i class="metismenu-icon pe-7s-display2"></i>Mon calendrier<i class="metismenu-state-icon "></i></a></li>
 
 								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mes étudiants<i class="metismenu-state-icon "></i></a></li>
 
 
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Téléchargements<i class="metismenu-state-icon "></i></a></li>
-
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mon parcours pro<i class="metismenu-state-icon "></i></a></li>
-
-							</ul>
-						</li>
-						{% else %}
-
-					{% endif %}
-
-					{% if is_granted('ROLE_TUTEUR', 'ROLE_ADMIN')  %}
-
-						<li class="app-sidebar__heading">Menu tuteur
-						</li>
-						<li>
-							<a href="#">
-								<i class="metismenu-icon lnr-apartment"></i>
-								Entreprise
-								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-							</a>
-							<ul>
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Nos tuteurs<i class="metismenu-state-icon "></i></a></li>
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Nos étudiants<i class="metismenu-state-icon "></i></a></li>
+								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mes formations<i class="metismenu-state-icon "></i></a></li>
 
 
 							</ul>
@@ -176,28 +117,7 @@
 
 					{% endif %}
 
-					<li class="app-sidebar__heading">Informations</li>
-					<li>
-						<a href="#">
-							<i class="metismenu-icon pe-7s-info"></i>
-							Informations
-							<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-						</a>
-						<ul>
-
-							<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Plaquettes de formations<i class="metismenu-state-icon "></i></a></li>
-							<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Infos sur les modules<i class="metismenu-state-icon "></i></a></li>
-							<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Infos de contrats<i class="metismenu-state-icon "></i></a></li>
-							<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Infos de contrats<i class="metismenu-state-icon "></i></a></li>
-
-
-						</ul>
-					</li>
-					<li>
-						<a href="#">
-							<i class="metismenu-icon pe-7s-users"></i>Trombinoscope
-						</a>
-					</li>
+		
 
 
 				</div>

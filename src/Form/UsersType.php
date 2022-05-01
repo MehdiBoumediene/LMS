@@ -40,9 +40,7 @@ class UsersType extends AbstractType
                     'Étudiant' => 'ROLE_ETUDIANT',
                     'Intervenant' => 'ROLE_INTERVENANT',
                     'Entreprise' => 'ROLE_ENTREPRISE',
-                    'Tuteur' => 'ROLE_TUTEUR',
                     'Administrateur' => 'ROLE_ADMIN',
-                    'Agent' => 'ROLE_AGENT',
                     
                 ],
                 'expanded' => false,
@@ -55,7 +53,7 @@ class UsersType extends AbstractType
             ->add('prenom')
             ->add('adresse')
             ->add('telephone')
-            ->add('classes', EntityType::class, [
+            ->remove('classes', EntityType::class, [
                 'class' => Classes::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
@@ -65,7 +63,7 @@ class UsersType extends AbstractType
                 'multiple' => true,
                 
             ])
-            ->add('module', EntityType::class, [
+            ->remove('module', EntityType::class, [
                 'class' => Modules::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
