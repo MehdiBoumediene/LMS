@@ -10,6 +10,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\ORM\EntityRepository;
 use App\Entity\Blocs;
 use App\Entity\Classes;
@@ -22,6 +24,7 @@ class ModulesType extends AbstractType
     {
         $builder
             ->add('nom')
+            ->add('description',TextareaType::class)
             ->remove('created_at')
             ->remove('created_by')
             ->remove('bloc', EntityType::class, [
@@ -42,7 +45,7 @@ class ModulesType extends AbstractType
             ])
 
             ->add('medias',FileType::class,[
-                'label'=> false,
+                'label'=> 'Videos',
                 'multiple' => true,
                 'mapped'=> false,
                 'required'=> false,

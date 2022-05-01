@@ -54,7 +54,7 @@
 								</a>
 								<ul>
 
-									<li><a href="{{path('app_modules_index')}}"{% if route_name == "app_modules_index" %} class="mm-active"{% elseif route_name == "app_modules_new" %} class="mm-active"{% elseif route_name == "app_modules_edit" %} class="mm-active"{% elseif route_name == "app_modules_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des modules<i class="metismenu-state-icon "></i></a></li>
+									<li><a href="{{path('app_modules_index')}}"{% if route_name == "app_modules_index" %} class="mm-active"{% elseif route_name == "app_modules_new" %} class="mm-active"{% elseif route_name == "app_modules_edit" %} class="mm-active"{% elseif route_name == "app_modules_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des formations<i class="metismenu-state-icon "></i></a></li>
 
 									<li><a href="{{path('app_intervenants_index')}}"{% if route_name == "app_intervenants_index" %} class="mm-active"{% elseif route_name == "app_intervenants_new" %} class="mm-active"{% elseif route_name == "app_intervenants_edit" %} class="mm-active"{% elseif route_name == "app_intervenants_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des intervenants<i class="metismenu-state-icon "></i></a></li>
 
@@ -83,12 +83,12 @@
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul>
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Liste des formations<i class="metismenu-state-icon "></i></a></li>
+								<li><a href="{{path('app_formations')}}"><i class="metismenu-icon pe-7s-display2"></i>Liste des formations<i class="metismenu-state-icon "></i></a></li>
 
 								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mes formations<i class="metismenu-state-icon "></i></a></li>
 							</ul>
 						</li>
->
+
 
 						{% else %}
 
