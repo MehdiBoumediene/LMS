@@ -27,6 +27,16 @@ class ModulesController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/formations", name="app_formations", methods={"GET"})
+     */
+    public function formations(ModulesRepository $modulesRepository): Response
+    {
+        return $this->render('modules/formations.html.twig', [
+            'modules' => $modulesRepository->findAll(),
+        ]);
+    }
+
     /**
      * @Route("/new", name="app_modules_new", methods={"GET", "POST"})
      */
