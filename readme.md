@@ -1,4 +1,5 @@
 Projet "LMS" sous symfony 5.4 (Plateforme E-learning). Lien: https://lms.sigmaformations.fr
+Lien du theme utilisé: https://demo.dashboardpack.com/architectui-html-pro/index.html
 
 INSTALLATION LOCAL:
 
