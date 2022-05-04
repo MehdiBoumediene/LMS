@@ -1,6 +1,6 @@
 Projet "LMS" sous symfony 5.4 (Plateforme E-learning). Lien: https://lms.sigmaformations.fr
 
-INSTALLATION:
+INSTALLATION LOCAL:
 
 1) lancer xamp ou wamp
 2) se mettre dans le dossier htdocs de xamp et lancer la commande "git clone https://github.com/MehdiBoumediene/LMS.git"
