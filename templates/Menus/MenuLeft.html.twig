@@ -35,7 +35,8 @@
 		<div class="scrollbar-sidebar">
 			<div class="app-sidebar__inner">
 				<ul class="vertical-nav-menu">
-					<li class="app-sidebar__heading"></li>
+					<li class="app-sidebar__heading">
+						Menu</li>
 					<li>
 						<a href="{{path('app_main')}}" {% if route_name == "app_main" %} class="mm-active" {% else %} class=" " {% endif %} aria-expanded="false">
 							<i class="metismenu-icon pe-7s-diamond"></i>Dashboard
@@ -44,8 +45,7 @@
 					{% if is_granted('ROLE_ADMIN') %}
 
 						{% if app.user.roles[0] == "ROLE_ADMIN" %}
-							<li class="app-sidebar__heading">Menu administrateur
-							</li>
+
 							<li {% if route_name == "app_classes_index" %} class="mm-active" {% elseif route_name == "app_classes_edit" %} class="mm-active" {% elseif route_name == "app_classes_show" %} class="mm-active" {% elseif route_name == "app_classes_new" %} class="mm-active" {% elseif route_name == "app_blocs_index" %} class="mm-active" {% elseif route_name == "app_blocs_new" %} class="mm-active" {% elseif route_name == "app_blocs_edit" %} class="mm-active" {% elseif route_name == "app_blocs_show" %} class="mm-active" {% elseif route_name == "app_modules_index" %} class="mm-active" {% elseif route_name == "app_modules_new" %} class="mm-active" {% elseif route_name == "app_modules_edit" %} class="mm-active" {% elseif route_name == "app_modules_show" %} class="mm-active" {% elseif route_name == "app_intervenants_index" %} class="mm-active" {% elseif route_name == "app_intervenants_new" %} class="mm-active" {% elseif route_name == "app_intervenants_edit" %} class="mm-active" {% elseif route_name == "app_intervenants_show" %} class="mm-active" {% elseif route_name == "app_etudiants_index" %} class="mm-active" {% elseif route_name == "app_etudiants_new" %} class="mm-active" {% elseif route_name == "app_etudiants_edit" %} class="mm-active" {% elseif route_name == "app_etudiants_show" %} class="mm-active" {% elseif route_name == "app_entreprises_index" %} class="mm-active" {% elseif route_name == "app_entreprises_new" %} class="mm-active" {% elseif route_name == "app_entreprises_edit" %} class="mm-active" {% elseif route_name == "app_entreprises_show" %} class="mm-active" {% elseif route_name == "app_tuteurs_index" %} class="mm-active" {% elseif route_name == "app_tuteurs_new" %} class="mm-active" {% elseif route_name == "app_tuteurs_edit" %} class="mm-active" {% elseif route_name == "app_tuteurs_show" %} class="mm-active" {% elseif route_name == "app_users_index" %} class="mm-active" {% elseif route_name == "app_users_new" %} class="mm-active" {% elseif route_name == "app_users_edit" %} class="mm-active" {% elseif route_name == "app_users_show" %} class="mm-active" {% elseif route_name == "app_gestion_calendrier" %} class="mm-active" {% else %} class=" " {% endif %}>
 								<a href="#">
 									<i class="metismenu-icon pe-7s-config"></i>
@@ -56,36 +56,38 @@
 
 									<li><a href="{{path('app_modules_index')}}"{% if route_name == "app_modules_index" %} class="mm-active"{% elseif route_name == "app_modules_new" %} class="mm-active"{% elseif route_name == "app_modules_edit" %} class="mm-active"{% elseif route_name == "app_modules_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des formations<i class="metismenu-state-icon "></i></a></li>
 
-									<li><a href="{{path('app_intervenants_index')}}"{% if route_name == "app_intervenants_index" %} class="mm-active"{% elseif route_name == "app_intervenants_new" %} class="mm-active"{% elseif route_name == "app_intervenants_edit" %} class="mm-active"{% elseif route_name == "app_intervenants_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des intervenants<i class="metismenu-state-icon "></i></a></li>
+									<li><a href="{{path('app_classes_index')}}"{% if route_name == "app_classes_index" %} class="mm-active"{% elseif route_name == "app_etudiants_new" %} class="mm-active"{% elseif route_name == "app_classes_edit" %} class="mm-active"{% elseif route_name == "app_classes_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des classes<i class="metismenu-state-icon "></i></a></li>
+
 
 									<li><a href="{{path('app_etudiants_index')}}"{% if route_name == "app_etudiants_index" %} class="mm-active"{% elseif route_name == "app_etudiants_new" %} class="mm-active"{% elseif route_name == "app_etudiants_edit" %} class="mm-active"{% elseif route_name == "app_etudiants_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des étudiants<i class="metismenu-state-icon "></i></a></li>
 
-									<li><a href="{{path('app_entreprises_index')}}"{% if route_name == "app_entreprises_index" %} class="mm-active"{% elseif route_name == "app_entreprises_new" %} class="mm-active"{% elseif route_name == "app_entreprises_edit" %} class="mm-active"{% elseif route_name == "app_entreprises_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Liste des entreprires<i class="metismenu-state-icon "></i></a></li>
-
 
 									<li><a href="{{path('app_users_index')}}"{% if route_name == "app_users_index" %} class="mm-active"{% elseif route_name == "app_users_new" %} class="mm-active"{% elseif route_name == "app_users_edit" %} class="mm-active"{% elseif route_name == "app_users_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Utilisateurs<i class="metismenu-state-icon "></i></a></li>
+									<li><a href="{{path('app_gestion_calendrier')}}"{% if route_name == "app_gestion_calendrier" %} class="mm-active"{% elseif route_name == "app_users_new" %} class="mm-active"{% elseif route_name == "app_users_edit" %} class="mm-active"{% elseif route_name == "app_users_show" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Gestion calendrier<i class="metismenu-state-icon "></i></a></li>
+
 
 								</ul>
 							</li>
-			
+
 						{% endif %}
 
 						{% else %}
 
 					{% endif %}
 					{% if is_granted('ROLE_ETUDIANT', 'ROLE_ADMIN')  %}
-						<li class="app-sidebar__heading">Menu étudiant
-						</li>
-						<li>
-							<a href="#">
+
+						<li {% if route_name == "app_classes_index" %} class="mm-active" {% elseif route_name == "app_formations" %} class="mm-active" {% elseif route_name == "app_classes_edit" %} class="mm-active" {% elseif route_name == "app_classes_show" %} class="mm-active" {% elseif route_name == "app_classes_new" %} class="mm-active" {% elseif route_name == "app_blocs_index" %} class="mm-active" {% elseif route_name == "app_blocs_new" %} class="mm-active" {% elseif route_name == "app_blocs_edit" %} class="mm-active" {% elseif route_name == "app_blocs_show" %} class="mm-active" {% elseif route_name == "app_modules_index" %} class="mm-active" {% elseif route_name == "app_modules_new" %} class="mm-active" {% elseif route_name == "app_modules_edit" %} class="mm-active" {% elseif route_name == "app_modules_show" %} class="mm-active" {% elseif route_name == "app_intervenants_index" %} class="mm-active" {% elseif route_name == "app_intervenants_new" %} class="mm-active" {% elseif route_name == "app_intervenants_edit" %} class="mm-active" {% elseif route_name == "app_intervenants_show" %} class="mm-active" {% elseif route_name == "app_etudiants_index" %} class="mm-active" {% elseif route_name == "app_etudiants_new" %} class="mm-active" {% elseif route_name == "app_etudiants_edit" %} class="mm-active" {% elseif route_name == "app_etudiants_show" %} class="mm-active" {% elseif route_name == "app_entreprises_index" %} class="mm-active" {% elseif route_name == "app_entreprises_new" %} class="mm-active" {% elseif route_name == "app_entreprises_edit" %} class="mm-active" {% elseif route_name == "app_entreprises_show" %} class="mm-active" {% elseif route_name == "app_tuteurs_index" %} class="mm-active" {% elseif route_name == "app_tuteurs_new" %} class="mm-active" {% elseif route_name == "app_tuteurs_edit" %} class="mm-active" {% elseif route_name == "app_tuteurs_show" %} class="mm-active" {% elseif route_name == "app_users_index" %} class="mm-active" {% elseif route_name == "app_users_new" %} class="mm-active" {% elseif route_name == "app_users_edit" %} class="mm-active" {% elseif route_name == "app_users_show" %} class="mm-active" {% elseif route_name == "app_gestion_calendrier" %} class="mm-active" {% else %} class=" " {% endif %}>
+							<a  href="#">
 								<i class="metismenu-icon lnr-graduation-hat"></i>
-								Scolarité
+								Apprenant
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul>
-								<li><a href="{{path('app_formations')}}"><i class="metismenu-icon pe-7s-display2"></i>Liste des formations<i class="metismenu-state-icon "></i></a></li>
+								<li><a href="{{path('app_formations')}}"{% if route_name == "app_formations" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Mes formations<i class="metismenu-state-icon "></i></a></li>
 
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mes formations<i class="metismenu-state-icon "></i></a></li>
+								<li><a href=""><i class="metismenu-icon pe-7s-display2"></i>Exercices & Corrections<i class="metismenu-state-icon "></i></a></li>
+								<li><a href="{{path('app_calendrier_etudiant')}}"><i class="metismenu-icon pe-7s-display2"></i>Mon calendrier<i class="metismenu-state-icon "></i></a></li>
+
 							</ul>
 						</li>
 
@@ -93,31 +95,6 @@
 						{% else %}
 
 					{% endif %}
-
-					{% if is_granted('ROLE_INTERVENANT', 'ROLE_ADMIN')  %}
-						<li class="app-sidebar__heading">
-							Menu intervenant</li>
-						<li>
-							<a href="#">
-								<i class="metismenu-icon pe-7s-user"></i>
-								Intervenant
-								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-							</a>
-							<ul>
-
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mes étudiants<i class="metismenu-state-icon "></i></a></li>
-
-
-								<li><a href="#"><i class="metismenu-icon pe-7s-display2"></i>Mes formations<i class="metismenu-state-icon "></i></a></li>
-
-
-							</ul>
-						</li>
-						{% else %}
-
-					{% endif %}
-
-		
 
 
 				</div>

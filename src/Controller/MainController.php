@@ -44,9 +44,17 @@ class MainController extends AbstractController
 
 
             ];
+            
 
             $data = json_encode($rdvs);
         }
+
+        if (compact('data')){
+           
+        }else{
+             $data=null;
+        }
+
         return $this->render('main/gestion_calendrier.html.twig',compact('data'));
     }
 
