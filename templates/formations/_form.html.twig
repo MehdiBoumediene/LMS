@@ -1,0 +1,24 @@
+<form method="POST" action="{{ path('app_formations_new') }}" enctype="multipart/form-data">
+	<div class="form-row">
+		<div class="col-md-5">
+			{{ form_row(form.nom,{'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.nom) }}
+		</div>
+
+		<div class="col-md-6">
+			{{ form_row(form.description,{'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.description) }}
+		</div>
+	</div>
+	<br>
+
+
+	{{ form_rest(form) }}
+
+	<br>
+	<br>
+	<br>
+	<button class="mt-1 btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+	ou
+	<a href="{{ path('app_formations_index') }}">Retour à la liste</a>
+</form>

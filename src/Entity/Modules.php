@@ -82,6 +82,21 @@ class Modules
      */
     private $description;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Couvertures::class, mappedBy="module", cascade={"all"})
+     */
+    private $couvertures;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Formations::class, inversedBy="module")
+     */
+    private $formations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Files::class, mappedBy="module", cascade={"all"})
+     */
+    private $files;
+
 
 
    
@@ -94,6 +109,8 @@ class Modules
         $this->absences = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->medias = new ArrayCollection();
+        $this->couvertures = new ArrayCollection();
+        $this->files = new ArrayCollection();
         
     }
 
@@ -326,6 +343,78 @@ class Modules
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Couvertures>
+     */
+    public function getCouvertures(): Collection
+    {
+        return $this->couvertures;
+    }
+
+    public function addCouverture(Couvertures $couverture): self
+    {
+        if (!$this->couvertures->contains($couverture)) {
+            $this->couvertures[] = $couverture;
+            $couverture->setModule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCouverture(Couvertures $couverture): self
+    {
+        if ($this->couvertures->removeElement($couverture)) {
+            // set the owning side to null (unless already changed)
+            if ($couverture->getModule() === $this) {
+                $couverture->setModule(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getFormations(): ?Formations
+    {
+        return $this->formations;
+    }
+
+    public function setFormations(?Formations $formations): self
+    {
+        $this->formations = $formations;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Files>
+     */
+    public function getFiles(): Collection
+    {
+        return $this->files;
+    }
+
+    public function addFile(Files $file): self
+    {
+        if (!$this->files->contains($file)) {
+            $this->files[] = $file;
+            $file->setModule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(Files $file): self
+    {
+        if ($this->files->removeElement($file)) {
+            // set the owning side to null (unless already changed)
+            if ($file->getModule() === $this) {
+                $file->setModule(null);
+            }
+        }
 
         return $this;
     }

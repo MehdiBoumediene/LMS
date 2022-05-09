@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Modules;
+use App\Entity\Formations;
 use App\Entity\Medias;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,6 +36,7 @@ class ModulesType extends AbstractType
                 },
                 'choice_label' => 'nom',
             ])
+
             ->remove('classes', EntityType::class, [
                 'class' => Classes::class,
                 'query_builder' => function (EntityRepository $er) {
@@ -42,6 +44,16 @@ class ModulesType extends AbstractType
                         ->orderBy('u.nom', 'ASC');
                 },
                 'choice_label' => 'nom',
+            ])
+
+
+            ->add('files',FileType::class,[
+                'label'=> 'Documents',
+                'multiple' => true,
+                'mapped'=> false,
+                'required'=> false,
+        
+            
             ])
 
             ->add('medias',FileType::class,[
@@ -54,6 +66,24 @@ class ModulesType extends AbstractType
 
             ])
 
+            ->add('couvertures',FileType::class,[
+                'label'=> 'Photo de couverture',
+                'multiple' => true,
+                'mapped'=> false,
+                'required'=> false,
+        
+              
+
+            ])
+            ->add('formations', EntityType::class, [
+                'class' => Formations::class,
+                
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.nom', 'ASC');
+                },
+                'choice_label' => 'nom',
+            ])
 
   
       
