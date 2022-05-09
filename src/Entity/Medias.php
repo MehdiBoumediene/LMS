@@ -30,6 +30,11 @@ class Medias
      */
     private $module;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -55,6 +60,18 @@ class Medias
     public function setModule(?Modules $module): self
     {
         $this->module = $module;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
 
         return $this;
     }

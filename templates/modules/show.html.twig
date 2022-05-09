@@ -75,35 +75,115 @@
 							</h5>
 						</div>
 
-						<div class="col-md-12">
-							<br>
-							<div class="main-card mb-3 card">
-								<div class="card-body">
-
-
-									<h5 style="font-size:16px; font-weight: bold;">Documents:</h5>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-card mb-3 card">
+							<div class="card-header">Documents</div>
+							<div class="card-body">
+								<div class="row">
 									{% for file in module.files %}
 
-										<iframe class="doc" src="https://docs.google.com/gview?url=https://127.0.0.1:8000{{asset('uploads')}}/{{file.name}}&embedded=true"></iframe{{file.name}}<hr> {% endfor %}
-										<h5 style="font-size:15px; font-weight: bold;">Videos:</h5>
-										{% for media in module.medias %}
-											<video width="100%" height="540" controls>
-												<source src="{{asset('uploads')}}/{{media.name}}" type="video/mp4">
-												Your browser does not support the video tag.
-											</video>
-										{% endfor %}
+
+										<div class="col-md-3" style="text-align:center;">
+											{% if file.name | split('.')[1] == 'docx' %}
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+													<img src="{{asset('word.jpg')}}" width="130">
+													<br>
+													{{file.nom}}
+
+												</a>
+											{% elseif  file.name | split('.')[1] == 'xls'  %}
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+													<img src="{{asset('excel.png')}}" width="130">
+													<br>
+													{{file.nom}}.xls
+
+												</a>
+											{% elseif  file.name | split('.')[1] == 'xlsx'  %}
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+													<img src="{{asset('excel.png')}}" width="130">
+													<br>
+													{{file.nom}}.xlsx
 
 
-									</div>
+												</a>
+											{% elseif  file.name | split('.')[1] == 'pptx'  %}
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+													<img src="{{asset('PowerPoint.png')}}" width="130">
+													<br>
+													{{file.nom}}.pptx
+
+
+												</a>
+											{% elseif  file.name | split('.')[1] == 'ppt'  %}
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+													<img src="{{asset('PowerPoint.png')}}" width="130">
+													<br>
+													{{file.nom}}.ppt
+
+
+												</a>
+
+											{% elseif  file.name | split('.')[1] == 'pptm'  %}
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+													<img src="{{asset('PowerPoint.png')}}" width="130">
+													<br>
+													{{file.nom}}.pptm
+
+
+												</a>
+											{% elseif  file.name | split('.')[1] == 'pdf'  %}
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+													<img src="{{asset('pdf.png')}}" width="100">
+													<br>
+													{{file.nom}}.pdf
+
+
+												</a>
+
+
+											{% endif %}
+										</div>
+
+
+									{% endfor %}
 								</div>
 							</div>
 
-
 						</div>
+
 					</div>
+
+
 				</div>
 
-				{{ block("Footer", "Menus/Footer.html.twig") }}
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-card mb-3 card">
+							<div class="card-header">Videos</div>
+							<div class="card-body">
+								{% for media in module.medias %}
+									<video width="100%" height="540" controls>
+										<source src="{{asset('uploads')}}/{{media.name}}" type="video/mp4">
+										Your browser does not support the video tag.
+									</video>
+								{% endfor %}
+							</div>
+
+						</div>
+
+					</div>
 
 
-			{% endblock %}
+				</div>
+
+
+			</div>
+
+			{{ block("Footer", "Menus/Footer.html.twig") }}
+
+
+		{% endblock %}

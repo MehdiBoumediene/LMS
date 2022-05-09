@@ -48,7 +48,7 @@ class ModulesType extends AbstractType
 
 
             ->add('files',FileType::class,[
-                'label'=> 'Documents',
+                'label'=> false,
                 'multiple' => true,
                 'mapped'=> false,
                 'required'=> false,
@@ -57,7 +57,7 @@ class ModulesType extends AbstractType
             ])
 
             ->add('medias',FileType::class,[
-                'label'=> 'Videos',
+                'label'=> false,
                 'multiple' => true,
                 'mapped'=> false,
                 'required'=> false,
