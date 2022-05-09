@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Couvertures;
+use App\Entity\Files;
 use App\Entity\Modules;
 use App\Entity\Medias;
 use App\Form\ModulesType;
@@ -50,6 +52,8 @@ class ModulesController extends AbstractController
 
             // Je récupère les videos transmises
             $videos = $form->get('medias')->getData();
+            $couvertures = $form->get('couvertures')->getData();
+            $files = $form->get('files')->getData();
 
             // Je boucle sur les videos
             foreach($videos as $video){
@@ -69,6 +73,42 @@ class ModulesController extends AbstractController
 
             }
 
+             // Je boucle sur les couvertures
+             foreach($couvertures as $couverture){
+                // Je génère un nouveau nom de fichier
+                $fichier = md5(uniqid()) . '.' . $couverture->guessExtension();
+
+                // Je copie le fichier dans le dossier uploads
+                $couverture->move(
+                    $this->getParameter('videos_directory'),
+                    $fichier
+                );
+
+                // Je stocke la photo dans la BDD (nom du fichier)
+                $image= new Couvertures();
+                $image->setName($fichier);
+                $module->addCouverture($image);
+
+            }
+
+
+             // Je boucle sur les documents
+             foreach($files as $file){
+                // Je génère un nouveau nom de fichier
+                $fichier = md5(uniqid()) . '.' . $file->guessExtension();
+
+                // Je copie le fichier dans le dossier uploads
+                $file->move(
+                    $this->getParameter('videos_directory'),
+                    $fichier
+                );
+
+                // Je stocke le document dans la BDD (nom du fichier)
+                $file= new Files();
+                $file->setName($fichier);
+                $module->addFile($file);
+
+            }
 
             $date = new \DateTimeImmutable('now');
             $module->setCreatedBy($this->getUser()->getEmail());

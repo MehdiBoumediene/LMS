@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modules
+{% block title %}Formations
 {% endblock %}
 
 {% block body %}
@@ -18,19 +18,19 @@
 							<div class="page-title-icon">
 								<i class="lnr-users icon-gradient bg-strong-bliss"></i>
 							</div>
-							<div>Modules
-								
+							<div>Formations
+
 							</div>
 						</div>
 						<div class="page-title-actions">
 
 							<div class="d-inline-block dropdown">
-								<a href="{{ path('app_modules_new') }}">
+								<a href="{{ path('app_formations_new') }}">
 									<button class="btn-shadow btn btn-success">
 										<span class="btn-icon-wrapper pr-2 opacity-7">
 											<i class="fa fa-plus fa-w-20"></i>
 										</span>
-										Ajouter un module
+										Ajouter une formation
 									</button>
 								</a>
 							</div>
@@ -59,26 +59,26 @@
 											</thead>
 											<tbody>
 
-												{% for module in modules %}
+												{% for formation in formations %}
 													<tr role="row" class="odd">
 
 														<td class="sorting_1 dtr-control">
-															<a href="{{ path('app_modules_show', {'id': module.id}) }}">{{ module.nom }}</a>
+															<a href="{{ path('app_formations_show', {'id': formation.id}) }}">{{ formation.nom }}</a>
 														</td>
 
 														<td class="sorting_1 dtr-control">
 
-															<a href="{{ path('app_modules_show', {'id': module.id}) }}">{{ module.createdAt|date('d-m-Y H:i') }}</a>
+															<a href="{{ path('app_formations_show', {'id': formation.id}) }}">{{ formation.createdAt|date('d-m-Y H:i') }}</a>
 
 														</td>
 
 														<td class="sorting_1 dtr-control">
-															<a href="{{ path('app_users_show', {'id': module.users.id}) }}">{{ module.createdBy }}</a>
+															<a>{{ formation.createdBy }}</a>
 
 														</td>
 
 														<td class="sorting_1 dtr-control">
-															<a href="{{ path('app_modules_edit', {'id': module.id}) }}">
+															<a href="{{ path('app_formations_edit', {'id': formation.id}) }}">
 																<button class="mb-2 mr-2 btn-icon btn-pill btn btn-link">
 																	<i class="pe-7s-tools btn-icon-wrapper"></i>Modifier</button>
 															</a>
