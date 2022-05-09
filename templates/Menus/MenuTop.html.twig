@@ -33,160 +33,161 @@
 		<div class="app-header__content">
 
 			<div class="app-header-right">
-				<div class="header-dots">
 
+				<div class="header-btn-lg pr-0">
+					<div class="widget-content p-0">
+						<div class="widget-content-wrapper">
+							<div class="widget-content-left">
+								<div class="btn-group">
+									<a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+										<img width="42" class="rounded-circle" src="{{asset('assets/images/avatars/2.jpg')}}" alt="">
+										<i class="fa fa-angle-down ml-2 opacity-8"></i>
+									</a>
+									<div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
+										<div class="dropdown-menu-header">
+											<div class="dropdown-menu-header-inner bg-info">
+												<div class="menu-header-image opacity-2" style="background-image: url('{{asset('assets/images/dropdown-header/city3.jpg')}}');"></div>
+												<div class="menu-header-content text-left">
+													<div class="widget-content p-0">
+														<div class="widget-content-wrapper">
+															<div class="widget-content-left mr-3">
+																<img width="42" class="rounded-circle" src="{{asset('assets/images/avatars/1.jpg')}}" alt="">
+															</div>
+															<div class="widget-content-left">
+																{% if is_granted('ROLE_ETUDIANT') %}
 
-					<div class="header-btn-lg pr-0">
-						<div class="widget-content p-0">
-							<div class="widget-content-wrapper">
-								<div class="widget-content-left">
-									<div class="btn-group">
-										<a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-											<img width="42" class="rounded-circle" src="{{asset('assets/images/avatars/2.jpg')}}" alt="">
-											<i class="fa fa-angle-down ml-2 opacity-8"></i>
-										</a>
-										<div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
-											<div class="dropdown-menu-header">
-												<div class="dropdown-menu-header-inner bg-info">
-													<div class="menu-header-image opacity-2" style="background-image: url('{{asset('assets/images/dropdown-header/city3.jpg')}}');"></div>
-													<div class="menu-header-content text-left">
-														<div class="widget-content p-0">
-															<div class="widget-content-wrapper">
-																<div class="widget-content-left mr-3">
-																	<img width="42" class="rounded-circle" src="{{asset('assets/images/avatars/1.jpg')}}" alt="">
-																</div>
-																<div class="widget-content-left">
-																	{% if is_granted('ROLE_ETUDIANT') %}
-
-																		{% if app.user.roles[0] == "ROLE_ETUDIANT" %}
-																			<div class="widget-heading">{{app.user.email}}</div>
-																			<div class="widget-subheading">
-																				Étudiant
-																			</div>
-																		{% endif %}
-
+																	{% if app.user.roles[0] == "ROLE_ETUDIANT" %}
+																		<div class="widget-heading">{{app.user.email}}</div>
+																		<div class="widget-subheading">
+																			Étudiant
+																		</div>
 																	{% endif %}
 
-																	{% if is_granted('ROLE_ADMIN') %}
+																{% endif %}
 
-																		{% if app.user.roles[0] == "ROLE_ADMIN" %}
-																			<div class="widget-heading">{{app.user.email}}</div>
-																			<div class="widget-subheading">
-																				Administrateur
-																			</div>
-																		{% endif %}
+																{% if is_granted('ROLE_ADMIN') %}
 
+																	{% if app.user.roles[0] == "ROLE_ADMIN" %}
+																		<div class="widget-heading">{{app.user.email}}</div>
+																		<div class="widget-subheading">
+																			Administrateur
+																		</div>
 																	{% endif %}
 
-																	{% if is_granted('ROLE_INTERVENANT') %}
+																{% endif %}
 
-																		{% if app.user.roles[0] == "ROLE_INTERVENANT" %}
-																			<div class="widget-heading">{{app.user.email}}</div>
-																			<div class="widget-subheading">
-																				Intervenant
-																			</div>
-																		{% endif %}
+																{% if is_granted('ROLE_INTERVENANT') %}
 
+																	{% if app.user.roles[0] == "ROLE_INTERVENANT" %}
+																		<div class="widget-heading">{{app.user.email}}</div>
+																		<div class="widget-subheading">
+																			Intervenant
+																		</div>
 																	{% endif %}
 
-																	{% if is_granted('ROLE_TUTEUR') %}
+																{% endif %}
 
-																		{% if app.user.roles[0] == "ROLE_TUTEUR" %}
-																			<div class="widget-heading">{{app.user.email}}</div>
-																			<div class="widget-subheading">
-																				Tuteur
-																			</div>
-																		{% endif %}
+																{% if is_granted('ROLE_TUTEUR') %}
 
+																	{% if app.user.roles[0] == "ROLE_TUTEUR" %}
+																		<div class="widget-heading">{{app.user.email}}</div>
+																		<div class="widget-subheading">
+																			Tuteur
+																		</div>
 																	{% endif %}
-																</div>
-																<div class="widget-content-right mr-2">
-																	<a href="{{path('app_logout')}}">
-																		<button class="btn-pill btn-shadow btn-shine btn btn-focus">Se déconnecter</button>
-																	</a>
-																</div>
+
+																{% endif %}
+															</div>
+															<div class="widget-content-right mr-2">
+																<a href="{{path('app_logout')}}">
+																	<button class="btn-pill btn-shadow btn-shine btn btn-focus">Se déconnecter</button>
+																</a>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="scroll-area-xs" style="height: 150px;">
-												<div class="scrollbar-container ps">
-													<ul class="nav flex-column">
+										</div>
+										<div class="scroll-area-xs" style="height: 150px;">
+											<div class="scrollbar-container ps">
+												<ul class="nav flex-column">
 
-														<li class="nav-item">
-															<a href="javascript:void(0);" class="nav-link">Mes informations</a>
-														</li>
-														<li class="nav-item">
-															<a href="javascript:void(0);" class="nav-link">Changer mon mot de passe</a>
-														</li>
-													</ul>
-												</div>
+													<li class="nav-item">
+														<a href="javascript:void(0);" class="nav-link">Mes informations</a>
+													</li>
+													<li class="nav-item">
+														<a href="javascript:void(0);" class="nav-link">Changer mon mot de passe</a>
+													</li>
+
+
+												</ul>
 											</div>
 										</div>
+
 									</div>
 								</div>
-								<div class="widget-content-left  ml-3 header-user-info">
-									{% if is_granted('ROLE_ETUDIANT') %}
+							</div>
+							<div class="widget-content-left  ml-3 header-user-info">
+								{% if is_granted('ROLE_ETUDIANT') %}
 
-										{% if app.user.roles[0] == "ROLE_ETUDIANT" %}
-											<div class="widget-heading">{{app.user.email}}</div>
-											<div class="widget-subheading">
-												Étudiant
-											</div>
-										{% endif %}
-
+									{% if app.user.roles[0] == "ROLE_ETUDIANT" %}
+										<div class="widget-heading">{{app.user.email}}</div>
+										<div class="widget-subheading">
+											Étudiant
+										</div>
 									{% endif %}
 
-									{% if is_granted('ROLE_ADMIN') %}
+								{% endif %}
+
+								{% if is_granted('ROLE_ADMIN') %}
 
 
-										{% if app.user.roles[0] == "ROLE_ADMIN" %}
-											<div class="widget-heading">{{app.user.email}}</div>
-											<div class="widget-subheading">
-												Administrateur
-											</div>
-										{% endif %}
-
+									{% if app.user.roles[0] == "ROLE_ADMIN" %}
+										<div class="widget-heading">{{app.user.email}}</div>
+										<div class="widget-subheading">
+											Administrateur
+										</div>
 									{% endif %}
 
-									{% if is_granted('ROLE_INTERVENANT') %}
+								{% endif %}
+
+								{% if is_granted('ROLE_INTERVENANT') %}
 
 
-										{% if app.user.roles[0] == "ROLE_INTERVENANT" %}
-											<div class="widget-heading">{{app.user.email}}</div>
-											<div class="widget-subheading">
-												Intervenant
-											</div>
-										{% endif %}
-
+									{% if app.user.roles[0] == "ROLE_INTERVENANT" %}
+										<div class="widget-heading">{{app.user.email}}</div>
+										<div class="widget-subheading">
+											Intervenant
+										</div>
 									{% endif %}
 
+								{% endif %}
 
-									{% if is_granted('ROLE_TUTEUR') %}
+
+								{% if is_granted('ROLE_TUTEUR') %}
 
 
-										{% if app.user.roles[0] == "ROLE_TUTEUR" %}
-											<div class="widget-heading">{{app.user.email}}</div>
-											<div class="widget-subheading">
-												Tuteur
-											</div>
-										{% endif %}
-
+									{% if app.user.roles[0] == "ROLE_TUTEUR" %}
+										<div class="widget-heading">{{app.user.email}}</div>
+										<div class="widget-subheading">
+											Tuteur
+										</div>
 									{% endif %}
 
+								{% endif %}
 
-								</div>
-								<div class="widget-content-right header-user-info ml-3">
-									<button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-										<i class="fa text-white fa-calendar pr-1 pl-1"></i>
-									</button>
-								</div>
+
+							</div>
+							<div class="widget-content-right header-user-info ml-3">
+								<button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
+									<i class="fa text-white fa-calendar pr-1 pl-1"></i>
+								</button>
 							</div>
 						</div>
 					</div>
-
 				</div>
+
 			</div>
 		</div>
-	{% endblock %}
+	</div>
+{% endblock %}
