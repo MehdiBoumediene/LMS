@@ -54,7 +54,8 @@ class ModulesController extends AbstractController
             $videos = $form->get('medias')->getData();
             $couvertures = $form->get('couvertures')->getData();
             $files = $form->get('files')->getData();
-
+            $nomFile = $_POST["nomFile"];
+            $nomVideo = $_POST["nomVideo"];
             // Je boucle sur les videos
             foreach($videos as $video){
                 // Je génère un nouveau nom de fichier
@@ -69,6 +70,7 @@ class ModulesController extends AbstractController
                 // Je stocke la video dans la BDD (nom du fichier)
                 $media= new Medias();
                 $media->setName($fichier);
+                $media->setNom($nomVideo);
                 $module->addMedia($media);
 
             }
@@ -106,6 +108,7 @@ class ModulesController extends AbstractController
                 // Je stocke le document dans la BDD (nom du fichier)
                 $file= new Files();
                 $file->setName($fichier);
+                $file->setNom($nomFile);
                 $module->addFile($file);
 
             }
