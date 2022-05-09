@@ -84,26 +84,27 @@
 									<h5 style="font-size:16px; font-weight: bold;">Documents:</h5>
 									{% for file in module.files %}
 
-										<iframe class="doc" src="https://docs.google.com/gview?url=https://127.0.0.1:8000{{asset('uploads')}}/{{file.name}}&embedded=true"></iframe{{file.name}}<hr> {% endfor %}
-										<h5 style="font-size:15px; font-weight: bold;">Videos:</h5>
-										{% for media in module.medias %}
-											<video width="100%" height="540" controls>
-												<source src="{{asset('uploads')}}/{{media.name}}" type="video/mp4">
-												Your browser does not support the video tag.
-											</video>
-										{% endfor %}
+										<iframe class="doc" src="https://docs.google.com/gview?url=http://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}&embedded=true"></iframe{{file.name}}<hr>
+									{% endfor %}
+									<h5 style="font-size:15px; font-weight: bold;">Videos:</h5>
+									{% for media in module.medias %}
+										<video width="100%" height="540" controls>
+											<source src="{{asset('uploads')}}/{{media.name}}" type="video/mp4">
+											Your browser does not support the video tag.
+										</video>
+									{% endfor %}
 
 
-									</div>
 								</div>
 							</div>
-
-
 						</div>
+
+
 					</div>
 				</div>
+			</div>
 
-				{{ block("Footer", "Menus/Footer.html.twig") }}
+			{{ block("Footer", "Menus/Footer.html.twig") }}
 
 
-			{% endblock %}
+		{% endblock %}
