@@ -84,7 +84,7 @@
 									<h5 style="font-size:16px; font-weight: bold;">Documents:</h5>
 									{% for file in module.files %}
 
-										<iframe class="doc" src="https://docs.google.com/gview?url=http://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}&embedded=true"></iframe{{file.name}}<hr>
+										<iframe class="doc" src="https://docs.google.com/viewerng/viewer?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}&embedded=true"></iframe{{file.name}}<hr>
 									{% endfor %}
 									<h5 style="font-size:15px; font-weight: bold;">Videos:</h5>
 									{% for media in module.medias %}
