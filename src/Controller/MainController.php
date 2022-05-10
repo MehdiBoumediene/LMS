@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Repository\CalendrierRepository;
+use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 class MainController extends AbstractController
 {
     /**
@@ -116,5 +118,28 @@ class MainController extends AbstractController
             $data = json_encode($rdvs);
         }
         return $this->render('main/calendrier_intervenant.html.twig',compact('data'));
+    }
+
+
+
+       /**
+     * @Route("/timer", name="app_timer", methods={"GET", "POST"})
+     */
+    public function timer(UsersRepository $user, Request $request): Response
+    {
+    
+
+        $timer = $request->query->get('timer');
+            
+
+
+        $response = new JsonResponse();
+
+        $response->headers->set('Content-Type','application/json');
+        return $response->setData(array(
+            'data'=>$timer,
+      
+
+        ));
     }
 }

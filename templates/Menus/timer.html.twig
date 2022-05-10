@@ -1,0 +1,45 @@
+{% block Timer %}
+
+	<div>
+		<p>You've been active:</p>
+		<p id="counter" class="timer"></p>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="{{asset('active-timeout.js')}}"></script>
+	<script type="text/javascript">
+		var timeout = document.getElementById("timeout"),
+counter = document.getElementById("counter");
+
+ActiveTimeout.count(function (time) {
+counter.innerHTML = time + "ms";
+return true;
+});
+
+
+$(document).ready(function () {
+
+const myTimeout = setInterval(myGreeting, 5000);
+
+function myGreeting() {
+
+$.ajax({
+method: "GET",
+url: "{{ path('app_timer') }}",
+data: {
+timer: counter.innerHTML.slice(0, -2)
+},
+success: function (reponse) { // $('#magasinDatas').html(data);
+console.log(reponse);
+}
+});
+}
+
+
+});
+	</script>
+
+
+{% endblock %}

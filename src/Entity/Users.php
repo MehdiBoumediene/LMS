@@ -158,6 +158,16 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $telechargements;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $timer;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $time_plateforme;
+
 
 
     public function __construct()
@@ -789,6 +799,30 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
                 $telechargement->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTimer(): ?string
+    {
+        return $this->timer;
+    }
+
+    public function setTimer(?string $timer): self
+    {
+        $this->timer = $timer;
+
+        return $this;
+    }
+
+    public function getTimePlateforme(): ?\DateTimeInterface
+    {
+        return $this->time_plateforme;
+    }
+
+    public function setTimePlateforme(?\DateTimeInterface $time_plateforme): self
+    {
+        $this->time_plateforme = $time_plateforme;
 
         return $this;
     }
