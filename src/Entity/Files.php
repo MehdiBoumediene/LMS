@@ -34,6 +34,11 @@ class Files
      */
     private $nom;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Telechargements::class, inversedBy="files")
+     */
+    private $telechargements;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,6 +76,18 @@ class Files
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getTelechargements(): ?Telechargements
+    {
+        return $this->telechargements;
+    }
+
+    public function setTelechargements(?Telechargements $telechargements): self
+    {
+        $this->telechargements = $telechargements;
 
         return $this;
     }
