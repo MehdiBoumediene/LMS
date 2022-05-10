@@ -8,6 +8,8 @@
 		.widget-title {
 			color: black;
 			opacity: 0.9 !important;
+			font-weight: bold;
+			font-size: 13px;
 		}
 	</style>
 	{{ block("MenuTop", "Menus/MenuTop.html.twig") }}
@@ -37,7 +39,7 @@
 
 					<div class="row">
 						<div class="col-md-6 col-lg-3">
-							<div class="widget-chart widget-chart2 text-left mb-3 card-btm-border card-shadow-primary border-primary card">
+							<div class="widget-chart widget-chart2 text-left mb-3 card-btm-border card-shadow-success border-success card">
 								<div class="widget-chat-wrapper-outer">
 									<div class="widget-chart-content">
 										<div class="widget-title opacity-5 text-uppercase">Date d'inscription</div>
@@ -45,7 +47,29 @@
 											<div class="widget-chart-flex align-items-center">
 												<div style="font-size: 16px;font-weight: normal;">
 
-													{{app.user.createdAt|date('d-m-Y H:i')}}
+													{{app.user.createdAt|date('d/m/Y H:i')}}
+
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-3">
+							<div class="widget-chart widget-chart2 text-left mb-3 card-btm-border card-shadow-success border-success card">
+								<div class="widget-chat-wrapper-outer">
+									<div class="widget-chart-content">
+										<div class="widget-title opacity-5 text-uppercase">Date d'échéance</div>
+										<div class="widget-numbers mt-2 fsize-4 mb-0 w-100">
+											<div class="widget-chart-flex align-items-center">
+												<div style="font-size: 16px;font-weight: normal;">
+
+
+													{{app.user.createdAt|date_modify("+1 year")|date('d/m/Y H:i')}}
+
 
 												</div>
 
@@ -64,7 +88,7 @@
 											<div class="widget-chart-flex align-items-center">
 												<div style="font-size: 16px;font-weight: normal;">
 
-													{{app.user.createdAt|date('d-m-Y H:i')}}
+													{{app.user.createdAt|date('d/m/Y H:i')}}<br>
 
 												</div>
 
@@ -114,7 +138,7 @@
 							</div>
 						</div>
 					</div>
-
+					{{ block("Timer", "Menus/timer.html.twig") }}
 
 				</div>
 			</div>
