@@ -97,6 +97,8 @@ class Modules
      */
     private $files;
 
+ 
+
 
 
    
@@ -111,6 +113,7 @@ class Modules
         $this->medias = new ArrayCollection();
         $this->couvertures = new ArrayCollection();
         $this->files = new ArrayCollection();
+
         
     }
 

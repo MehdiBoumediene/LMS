@@ -41,7 +41,7 @@
 													</div>
 													<div class="card-body" style="padding:0px;">
 														{% for couverture in module.couvertures %}
-															<img width="300.98" style="margin-left: -1px;" src="{{asset('uploads')}}/{{couverture.name}}">
+															<img width="300.98" src="{{asset('uploads')}}/{{couverture.name}}">
 														{% endfor %}
 														<span style="color:white; position: relative;padding: 5px;float: left;margin-top: 0px;padding-bottom: 6px;">
 															{{ module.description|raw()}}
