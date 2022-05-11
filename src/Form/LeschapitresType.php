@@ -27,6 +27,7 @@ class LeschapitresType extends AbstractType
     {
         $builder
         ->add('nom')
+        ->add('temps')
         ->add('description',TextareaType::class)
         ->remove('created_at')
         ->remove('created_by')

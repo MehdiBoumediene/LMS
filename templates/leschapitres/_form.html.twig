@@ -16,6 +16,12 @@
 			{{ form_errors(form.lesmodules) }}
 		</div>
 
+		<div class="col-md-3">
+
+			{{ form_row(form.temps,{'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.temps) }}
+		</div>
+
 		<div class="col-md-6">
 			{{ form_row(form.description,{'attr': {'class': 'form-control'}}) }}
 			{{ form_errors(form.description) }}
