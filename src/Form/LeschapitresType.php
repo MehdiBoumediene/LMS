@@ -48,14 +48,14 @@ class LeschapitresType extends AbstractType
             'choice_label' => 'nom',
         ])
         
-        ->add('modules', EntityType::class, [
+        ->add('lesmodules', EntityType::class, [
             'class' => Lesmodules::class,
             'query_builder' => function (EntityRepository $er) {
                 return $er->createQueryBuilder('u')
                     ->orderBy('u.nom', 'ASC');
             },
             'choice_label' => 'nom',
-            'multiple' => true,
+            'multiple' => false,
         ])
 
         ->add('files',FileType::class,[

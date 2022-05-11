@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\LesmodulesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,10 +26,7 @@ class Lesmodules
      */
     private $nom;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Leschapitres::class, inversedBy="modules")
-     */
-    private $leschapitres;
+
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -43,6 +42,16 @@ class Lesmodules
      * @ORM\ManyToOne(targetEntity=Formations::class, inversedBy="lesmodules")
      */
     private $formations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Leschapitres::class, mappedBy="lesmodules")
+     */
+    private $leschapitres;
+
+    public function __construct()
+    {
+        $this->leschapitres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,17 +70,7 @@ class Lesmodules
         return $this;
     }
 
-    public function getLeschapitres(): ?Leschapitres
-    {
-        return $this->leschapitres;
-    }
 
-    public function setLeschapitres(?Leschapitres $leschapitres): self
-    {
-        $this->leschapitres = $leschapitres;
-
-        return $this;
-    }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
@@ -105,6 +104,36 @@ class Lesmodules
     public function setFormations(?Formations $formations): self
     {
         $this->formations = $formations;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Leschapitres>
+     */
+    public function getLeschapitres(): Collection
+    {
+        return $this->leschapitres;
+    }
+
+    public function addLeschapitre(Leschapitres $leschapitre): self
+    {
+        if (!$this->leschapitres->contains($leschapitre)) {
+            $this->leschapitres[] = $leschapitre;
+            $leschapitre->setLesmodules($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeschapitre(Leschapitres $leschapitre): self
+    {
+        if ($this->leschapitres->removeElement($leschapitre)) {
+            // set the owning side to null (unless already changed)
+            if ($leschapitre->getLesmodules() === $this) {
+                $leschapitre->setLesmodules(null);
+            }
+        }
 
         return $this;
     }

@@ -77,16 +77,18 @@ class Leschapitres
     private $files;
 
     /**
-     * @ORM\OneToMany(targetEntity=Lesmodules::class, mappedBy="leschapitres")
+     * @ORM\ManyToOne(targetEntity=Lesmodules::class, inversedBy="leschapitres")
      */
-    private $modules;
+    private $lesmodules;
+
+
 
     public function __construct()
     {
         $this->medias = new ArrayCollection();
         $this->couvertures = new ArrayCollection();
         $this->files = new ArrayCollection();
-        $this->modules = new ArrayCollection();
+     
     }
 
     public function getId(): ?int
@@ -280,33 +282,17 @@ class Leschapitres
         return $this;
     }
 
-    /**
-     * @return Collection<int, Lesmodules>
-     */
-    public function getModules(): Collection
+    public function getLesmodules(): ?Lesmodules
     {
-        return $this->modules;
+        return $this->lesmodules;
     }
 
-    public function addModule(Lesmodules $module): self
+    public function setLesmodules(?Lesmodules $lesmodules): self
     {
-        if (!$this->modules->contains($module)) {
-            $this->modules[] = $module;
-            $module->setLeschapitres($this);
-        }
+        $this->lesmodules = $lesmodules;
 
         return $this;
     }
 
-    public function removeModule(Lesmodules $module): self
-    {
-        if ($this->modules->removeElement($module)) {
-            // set the owning side to null (unless already changed)
-            if ($module->getLeschapitres() === $this) {
-                $module->setLeschapitres(null);
-            }
-        }
 
-        return $this;
-    }
 }
