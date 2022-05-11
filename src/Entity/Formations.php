@@ -66,6 +66,11 @@ class Formations
      */
     private $couvertures;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Blocs::class, mappedBy="formations")
+     */
+    private $blocs;
+
     public function __construct()
     {
         $this->module = new ArrayCollection();
@@ -73,6 +78,7 @@ class Formations
         $this->leschapitres = new ArrayCollection();
         $this->lesmodules = new ArrayCollection();
         $this->couvertures = new ArrayCollection();
+        $this->blocs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -269,6 +275,36 @@ class Formations
             // set the owning side to null (unless already changed)
             if ($couverture->getFormations() === $this) {
                 $couverture->setFormations(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Blocs>
+     */
+    public function getBlocs(): Collection
+    {
+        return $this->blocs;
+    }
+
+    public function addBloc(Blocs $bloc): self
+    {
+        if (!$this->blocs->contains($bloc)) {
+            $this->blocs[] = $bloc;
+            $bloc->setFormations($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBloc(Blocs $bloc): self
+    {
+        if ($this->blocs->removeElement($bloc)) {
+            // set the owning side to null (unless already changed)
+            if ($bloc->getFormations() === $this) {
+                $bloc->setFormations(null);
             }
         }
 

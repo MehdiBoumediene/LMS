@@ -55,6 +55,11 @@
 								</a>
 							</li>
 							<li>
+								<a href="{{path('app_blocs_index')}}" {% if route_name == "app_blocs_index" %} class="mm-active" {% elseif route_name == "app_blocs_new" %} class="mm-active" {% elseif route_name == "app_blocs_edit" %} class="mm-active" {% elseif route_name == "app_blocs_show" %} class="mm-active" {% else %} class=" " {% endif %}>
+									<i class="metismenu-icon pe-7s-display2"></i>Liste des blocs<i class="metismenu-state-icon "></i>
+								</a>
+							</li>
+							<li>
 								<a href="{{path('app_lesmodules_index')}}" {% if route_name == "app_lesmodules_index" %} class="mm-active" {% elseif route_name == "app_lesmodules_new" %} class="mm-active" {% elseif route_name == "app_lesmodules_edit" %} class="mm-active" {% elseif route_name == "app_lesmodules_show" %} class="mm-active" {% else %} class=" " {% endif %}>
 									<i class="metismenu-icon pe-7s-display2"></i>Liste des modules<i class="metismenu-state-icon "></i>
 								</a>

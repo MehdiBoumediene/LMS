@@ -48,6 +48,11 @@ class Lesmodules
      */
     private $leschapitres;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Blocs::class, inversedBy="lesmodules")
+     */
+    private $blocs;
+
     public function __construct()
     {
         $this->leschapitres = new ArrayCollection();
@@ -134,6 +139,18 @@ class Lesmodules
                 $leschapitre->setLesmodules(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBlocs(): ?Blocs
+    {
+        return $this->blocs;
+    }
+
+    public function setBlocs(?Blocs $blocs): self
+    {
+        $this->blocs = $blocs;
 
         return $this;
     }

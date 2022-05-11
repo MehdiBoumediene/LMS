@@ -56,10 +56,21 @@ class Blocs
      */
     private $leschapitres;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Formations::class, inversedBy="blocs")
+     */
+    private $formations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Lesmodules::class, mappedBy="blocs")
+     */
+    private $lesmodules;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
         $this->leschapitres = new ArrayCollection();
+        $this->lesmodules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -181,6 +192,48 @@ class Blocs
             // set the owning side to null (unless already changed)
             if ($leschapitre->getBloc() === $this) {
                 $leschapitre->setBloc(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getFormations(): ?Formations
+    {
+        return $this->formations;
+    }
+
+    public function setFormations(?Formations $formations): self
+    {
+        $this->formations = $formations;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Lesmodules>
+     */
+    public function getLesmodules(): Collection
+    {
+        return $this->lesmodules;
+    }
+
+    public function addLesmodule(Lesmodules $lesmodule): self
+    {
+        if (!$this->lesmodules->contains($lesmodule)) {
+            $this->lesmodules[] = $lesmodule;
+            $lesmodule->setBlocs($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesmodule(Lesmodules $lesmodule): self
+    {
+        if ($this->lesmodules->removeElement($lesmodule)) {
+            // set the owning side to null (unless already changed)
+            if ($lesmodule->getBlocs() === $this) {
+                $lesmodule->setBlocs(null);
             }
         }
 
