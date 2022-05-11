@@ -81,6 +81,11 @@ class Leschapitres
      */
     private $lesmodules;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $temps;
+
 
 
     public function __construct()
@@ -290,6 +295,18 @@ class Leschapitres
     public function setLesmodules(?Lesmodules $lesmodules): self
     {
         $this->lesmodules = $lesmodules;
+
+        return $this;
+    }
+
+    public function getTemps(): ?string
+    {
+        return $this->temps;
+    }
+
+    public function setTemps(?string $temps): self
+    {
+        $this->temps = $temps;
 
         return $this;
     }
