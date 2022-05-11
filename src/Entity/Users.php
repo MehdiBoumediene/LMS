@@ -173,6 +173,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $formations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Leschapitres::class, mappedBy="users")
+     */
+    private $leschapitres;
+
 
 
     public function __construct()
@@ -192,6 +197,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->module = new ArrayCollection();
         $this->telechargements = new ArrayCollection();
         $this->formations = new ArrayCollection();
+        $this->leschapitres = new ArrayCollection();
       
     }
 
@@ -853,6 +859,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeFormation(Formations $formation): self
     {
         $this->formations->removeElement($formation);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Leschapitres>
+     */
+    public function getLeschapitres(): Collection
+    {
+        return $this->leschapitres;
+    }
+
+    public function addLeschapitre(Leschapitres $leschapitre): self
+    {
+        if (!$this->leschapitres->contains($leschapitre)) {
+            $this->leschapitres[] = $leschapitre;
+            $leschapitre->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeschapitre(Leschapitres $leschapitre): self
+    {
+        if ($this->leschapitres->removeElement($leschapitre)) {
+            // set the owning side to null (unless already changed)
+            if ($leschapitre->getUsers() === $this) {
+                $leschapitre->setUsers(null);
+            }
+        }
 
         return $this;
     }

@@ -39,6 +39,11 @@ class Files
      */
     private $telechargements;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Leschapitres::class, inversedBy="files")
+     */
+    private $leschapitres;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +93,18 @@ class Files
     public function setTelechargements(?Telechargements $telechargements): self
     {
         $this->telechargements = $telechargements;
+
+        return $this;
+    }
+
+    public function getLeschapitres(): ?Leschapitres
+    {
+        return $this->leschapitres;
+    }
+
+    public function setLeschapitres(?Leschapitres $leschapitres): self
+    {
+        $this->leschapitres = $leschapitres;
 
         return $this;
     }

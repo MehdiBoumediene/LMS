@@ -76,6 +76,11 @@ class Classes
      */
     private $telechargements;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Leschapitres::class, mappedBy="classes")
+     */
+    private $leschapitres;
+
     public function __construct()
     {
         $this->blocs = new ArrayCollection();
@@ -84,6 +89,7 @@ class Classes
         $this->intervenants = new ArrayCollection();
         $this->modules = new ArrayCollection();
         $this->telechargements = new ArrayCollection();
+        $this->leschapitres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -322,6 +328,36 @@ class Classes
             // set the owning side to null (unless already changed)
             if ($telechargement->getClasse() === $this) {
                 $telechargement->setClasse(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Leschapitres>
+     */
+    public function getLeschapitres(): Collection
+    {
+        return $this->leschapitres;
+    }
+
+    public function addLeschapitre(Leschapitres $leschapitre): self
+    {
+        if (!$this->leschapitres->contains($leschapitre)) {
+            $this->leschapitres[] = $leschapitre;
+            $leschapitre->setClasses($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeschapitre(Leschapitres $leschapitre): self
+    {
+        if ($this->leschapitres->removeElement($leschapitre)) {
+            // set the owning side to null (unless already changed)
+            if ($leschapitre->getClasses() === $this) {
+                $leschapitre->setClasses(null);
             }
         }
 

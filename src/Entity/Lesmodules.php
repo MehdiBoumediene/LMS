@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\ChapitresRepository;
+use App\Repository\LesmodulesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
- * @ORM\Entity(repositoryClass=ChapitresRepository::class)
+ * @ORM\Entity(repositoryClass=LesmodulesRepository::class)
  */
-class Chapitres
+class Lesmodules
 {
     /**
      * @ORM\Id
@@ -25,6 +25,11 @@ class Chapitres
     private $nom;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Leschapitres::class, inversedBy="modules")
+     */
+    private $leschapitres;
+
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
@@ -35,11 +40,9 @@ class Chapitres
     private $createdBy;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Modules::class, inversedBy="chapitre")
+     * @ORM\ManyToOne(targetEntity=Formations::class, inversedBy="lesmodules")
      */
-    private $modules;
-
-
+    private $formations;
 
     public function getId(): ?int
     {
@@ -54,6 +57,18 @@ class Chapitres
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getLeschapitres(): ?Leschapitres
+    {
+        return $this->leschapitres;
+    }
+
+    public function setLeschapitres(?Leschapitres $leschapitres): self
+    {
+        $this->leschapitres = $leschapitres;
 
         return $this;
     }
@@ -82,19 +97,15 @@ class Chapitres
         return $this;
     }
 
-    public function getModules(): ?Modules
+    public function getFormations(): ?Formations
     {
-        return $this->modules;
+        return $this->formations;
     }
 
-    public function setModules(?Modules $modules): self
+    public function setFormations(?Formations $formations): self
     {
-        $this->modules = $modules;
+        $this->formations = $formations;
 
         return $this;
     }
-
-   
-
-   
 }
