@@ -1,0 +1,20 @@
+<form method="POST" action="{{ path('app_chapitres_new') }}" enctype="multipart/form-data">
+	<div class="form-row">
+		<div class="col-md-5">
+			{{ form_row(form.nom,{'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.nom) }}
+		</div>
+
+	</div>
+	<br>
+
+
+	{{ form_rest(form) }}
+
+	<br>
+	<br>
+	<br>
+	<button class="mt-1 btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+	ou
+	<a href="{{ path('app_chapitres_index') }}">Retour à la liste</a>
+</form>

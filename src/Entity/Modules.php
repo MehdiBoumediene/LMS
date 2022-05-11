@@ -97,6 +97,12 @@ class Modules
      */
     private $files;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Chapitres::class, mappedBy="modules")
+     */
+    private $chapitre;
+
+
  
 
 
@@ -113,6 +119,8 @@ class Modules
         $this->medias = new ArrayCollection();
         $this->couvertures = new ArrayCollection();
         $this->files = new ArrayCollection();
+        $this->chapitre = new ArrayCollection();
+      
 
         
     }
@@ -421,6 +429,38 @@ class Modules
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Chapitres>
+     */
+    public function getChapitre(): Collection
+    {
+        return $this->chapitre;
+    }
+
+    public function addChapitre(Chapitres $chapitre): self
+    {
+        if (!$this->chapitre->contains($chapitre)) {
+            $this->chapitre[] = $chapitre;
+            $chapitre->setModules($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChapitre(Chapitres $chapitre): self
+    {
+        if ($this->chapitre->removeElement($chapitre)) {
+            // set the owning side to null (unless already changed)
+            if ($chapitre->getModules() === $this) {
+                $chapitre->setModules(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 
 
 

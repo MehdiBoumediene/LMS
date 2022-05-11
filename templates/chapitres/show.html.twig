@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chapitres{% endblock %}
+
+{% block body %}
+    <h1>Chapitres</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chapitre.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ chapitre.nom }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ chapitre.createdAt ? chapitre.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedBy</th>
+                <td>{{ chapitre.createdBy }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chapitres_index') }}">back to list</a>
+
+    <a href="{{ path('app_chapitres_edit', {'id': chapitre.id}) }}">edit</a>
+
+    {{ include('chapitres/_delete_form.html.twig') }}
+{% endblock %}

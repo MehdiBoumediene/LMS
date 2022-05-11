@@ -46,10 +46,7 @@ class Telechargements
      */
     private $classe;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Modules::class, inversedBy="telechargements")
-     */
-    private $module;
+   
 
     /**
      * @ORM\OneToMany(targetEntity=Files::class, mappedBy="telechargements", cascade={"all"})
@@ -126,17 +123,6 @@ class Telechargements
         return $this;
     }
 
-    public function getModule(): ?Modules
-    {
-        return $this->module;
-    }
-
-    public function setModule(?Modules $module): self
-    {
-        $this->module = $module;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Files>

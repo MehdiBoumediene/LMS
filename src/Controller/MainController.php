@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\Users;
 use App\Repository\CalendrierRepository;
 use App\Repository\UsersRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -125,7 +126,7 @@ class MainController extends AbstractController
        /**
      * @Route("/timer", name="app_timer", methods={"GET", "POST"})
      */
-    public function timer(UsersRepository $user, Request $request): Response
+    public function timer(UsersRepository $user, EntityManagerInterface $em, Request $request): Response
     {
     
 
@@ -134,6 +135,27 @@ class MainController extends AbstractController
 
 
         $response = new JsonResponse();
+
+     
+
+        $user = $this->getDoctrine()->getRepository(Users::class)->findOneBy(['id'=> $this->getUser()]) ;            
+        if( $user)
+        {
+            
+            $qb = $em->createQueryBuilder();
+            $q = $qb->update('App:Users', 'u')
+
+                ->set('u.timer','?1')
+              
+
+                ->setParameter(1,+$timer)
+       
+
+                ->getQuery();
+            $p = $q->execute();
+                
+        }
+
 
         $response->headers->set('Content-Type','application/json');
         return $response->setData(array(
