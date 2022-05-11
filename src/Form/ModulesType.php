@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Modules;
+use App\Entity\Chapitres;
 use App\Entity\Formations;
 use App\Entity\Medias;
 use Symfony\Component\Form\AbstractType;
@@ -44,6 +45,16 @@ class ModulesType extends AbstractType
                         ->orderBy('u.nom', 'ASC');
                 },
                 'choice_label' => 'nom',
+            ])
+            ->add('chapitre', EntityType::class, [
+                'class' => Chapitres::class,
+                
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.nom', 'ASC');
+                },
+                'choice_label' => 'nom',
+                'multiple' => true,
             ])
 
 
