@@ -168,6 +168,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $time_plateforme;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Formations::class, inversedBy="users")
+     */
+    private $formations;
+
 
 
     public function __construct()
@@ -186,6 +191,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->documents = new ArrayCollection();
         $this->module = new ArrayCollection();
         $this->telechargements = new ArrayCollection();
+        $this->formations = new ArrayCollection();
       
     }
 
@@ -823,6 +829,30 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTimePlateforme(?\DateTimeInterface $time_plateforme): self
     {
         $this->time_plateforme = $time_plateforme;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Formations>
+     */
+    public function getFormations(): Collection
+    {
+        return $this->formations;
+    }
+
+    public function addFormation(Formations $formation): self
+    {
+        if (!$this->formations->contains($formation)) {
+            $this->formations[] = $formation;
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formations $formation): self
+    {
+        $this->formations->removeElement($formation);
 
         return $this;
     }

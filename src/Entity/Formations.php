@@ -46,9 +46,15 @@ class Formations
      */
     private $createdBy;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Users::class, mappedBy="formations")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->module = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -130,6 +136,33 @@ class Formations
     public function setCreatedBy(string $createdBy): self
     {
         $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Users>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(Users $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addFormation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(Users $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeFormation($this);
+        }
 
         return $this;
     }
