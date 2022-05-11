@@ -77,15 +77,7 @@ class LeschapitresType extends AbstractType
 
         ])
 
-        ->add('couvertures',FileType::class,[
-            'label'=> 'Photo de couverture',
-            'multiple' => true,
-            'mapped'=> false,
-            'required'=> false,
-    
-          
 
-        ])
         ->add('formations', EntityType::class, [
             'class' => Formations::class,
             

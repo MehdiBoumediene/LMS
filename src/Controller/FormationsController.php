@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\Couvertures;
 use App\Entity\Formations;
 use App\Form\FormationsType;
 use App\Repository\FormationsRepository;
@@ -35,7 +35,25 @@ class FormationsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $couvertures = $form->get('couvertures')->getData();
 
+            foreach($couvertures as $couverture){
+                // Je génère un nouveau nom de fichier
+                $fichier = md5(uniqid()) . '.' . $couverture->guessExtension();
+ 
+                // Je copie le fichier dans le dossier uploads
+                $couverture->move(
+                    $this->getParameter('videos_directory'),
+                    $fichier
+                );
+ 
+                // Je stocke la photo dans la BDD (nom du fichier)
+                $image= new Couvertures();
+                $image->setName($fichier);
+                $formation->addCouverture($image);
+ 
+            }
+            
             $date = new \DateTimeImmutable('now');
             $formation->setCreatedBy($this->getUser()->getEmail());
             $formation->setCreatedAt($date);
