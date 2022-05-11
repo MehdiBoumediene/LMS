@@ -35,6 +35,11 @@ class Medias
      */
     private $nom;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Leschapitres::class, inversedBy="medias")
+     */
+    private $leschapitres;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,6 +77,18 @@ class Medias
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getLeschapitres(): ?Leschapitres
+    {
+        return $this->leschapitres;
+    }
+
+    public function setLeschapitres(?Leschapitres $leschapitres): self
+    {
+        $this->leschapitres = $leschapitres;
 
         return $this;
     }

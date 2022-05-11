@@ -29,6 +29,11 @@ class Couvertures
      */
     private $module;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Leschapitres::class, inversedBy="couvertures")
+     */
+    private $leschapitres;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +59,18 @@ class Couvertures
     public function setModule(?Modules $module): self
     {
         $this->module = $module;
+
+        return $this;
+    }
+
+    public function getLeschapitres(): ?Leschapitres
+    {
+        return $this->leschapitres;
+    }
+
+    public function setLeschapitres(?Leschapitres $leschapitres): self
+    {
+        $this->leschapitres = $leschapitres;
 
         return $this;
     }

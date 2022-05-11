@@ -16,6 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Classes;
+use App\Entity\Formations;
 use App\Entity\Entreprises;
 use App\Entity\Modules;
 
@@ -55,6 +56,16 @@ class UsersType extends AbstractType
             ->add('telephone')
             ->remove('classes', EntityType::class, [
                 'class' => Classes::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.nom', 'ASC');
+                },
+                'choice_label' => 'nom',
+                'multiple' => true,
+                
+            ])
+            ->add('formations', EntityType::class, [
+                'class' => Formations::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.nom', 'ASC');

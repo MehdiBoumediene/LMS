@@ -51,9 +51,15 @@ class Blocs
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Leschapitres::class, mappedBy="bloc")
+     */
+    private $leschapitres;
+
     public function __construct()
     {
         $this->modules = new ArrayCollection();
+        $this->leschapitres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -147,6 +153,36 @@ class Blocs
     public function setUser(?Users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Leschapitres>
+     */
+    public function getLeschapitres(): Collection
+    {
+        return $this->leschapitres;
+    }
+
+    public function addLeschapitre(Leschapitres $leschapitre): self
+    {
+        if (!$this->leschapitres->contains($leschapitre)) {
+            $this->leschapitres[] = $leschapitre;
+            $leschapitre->setBloc($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeschapitre(Leschapitres $leschapitre): self
+    {
+        if ($this->leschapitres->removeElement($leschapitre)) {
+            // set the owning side to null (unless already changed)
+            if ($leschapitre->getBloc() === $this) {
+                $leschapitre->setBloc(null);
+            }
+        }
 
         return $this;
     }
