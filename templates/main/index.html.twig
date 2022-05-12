@@ -110,7 +110,8 @@
 
 													{% set secondes = (app.user.timer / 1000) % 60 %}
 													{% set minutes = (app.user.timer / (1000*60)) % 60 %}
-													{% set heurs = (minutes / 60) %}
+													{% set heurs = (app.user.timer / (1000*60*60)) % 24 %}
+
 
 													{{heurs|round(0, 'floor')}}:{{minutes}}:{{secondes}}
 
