@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\IntervenantsRepository;
+use App\Repository\LeschapitresRepository;
 
 /**
  * @Route("/modules")
@@ -32,10 +33,12 @@ class ModulesController extends AbstractController
      /**
      * @Route("/formations", name="app_formations", methods={"GET"})
      */
-    public function formations(ModulesRepository $modulesRepository): Response
+    public function formations(LeschapitresRepository $LeschapitresRepository): Response
     {
+    
+
         return $this->render('modules/formations.html.twig', [
-            'modules' => $modulesRepository->findAll(),
+            'chapitres' => $LeschapitresRepository->findAll(),
         ]);
     }
 
