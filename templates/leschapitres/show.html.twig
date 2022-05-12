@@ -89,21 +89,21 @@
 
 										<div class="col-md-3" style="text-align:center;">
 											{% if file.name | split('.')[1] == 'docx' %}
-												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}}&embedded=true" target="blank_">
 													<img src="{{asset('word.jpg')}}" width="130">
 													<br>
 													{{file.name}}
 
 												</a>
 											{% elseif  file.name | split('.')[1] == 'xls'  %}
-												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}}&embedded=true" target="blank_">
 													<img src="{{asset('excel.png')}}" width="130">
 													<br>
 													{{file.name}}.xls
 
 												</a>
 											{% elseif  file.name | split('.')[1] == 'xlsx'  %}
-												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}}&embedded=true" target="blank_">
 													<img src="{{asset('excel.png')}}" width="130">
 													<br>
 													{{file.name}}.xlsx
@@ -111,7 +111,7 @@
 
 												</a>
 											{% elseif  file.name | split('.')[1] == 'pptx'  %}
-												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}}&embedded=true" target="blank_">
 													<img src="{{asset('PowerPoint.png')}}" width="130">
 													<br>
 													{{file.name}}.pptx
@@ -119,7 +119,7 @@
 
 												</a>
 											{% elseif  file.name | split('.')[1] == 'ppt'  %}
-												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}}&embedded=true" target="blank_">
 													<img src="{{asset('PowerPoint.png')}}" width="130">
 													<br>
 													{{file.name}}.ppt
@@ -128,7 +128,7 @@
 												</a>
 
 											{% elseif  file.name | split('.')[1] == 'pptm'  %}
-												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}}&embedded=true" target="blank_">
 													<img src="{{asset('PowerPoint.png')}}" width="130">
 													<br>
 													{{file.name}}.pptm
@@ -136,7 +136,7 @@
 
 												</a>
 											{% elseif  file.name | split('.')[1] == 'pdf'  %}
-												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}" target="blank_">
+												<a href="https://docs.google.com/gview?url=https://lms.sigmaformations.fr{{asset('uploads')}}/{{file.name}}}&embedded=true" target="blank_">
 													<img src="{{asset('pdf.png')}}" width="100">
 													<br>
 													{{file.name}}.pdf
