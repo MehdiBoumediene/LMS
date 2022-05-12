@@ -62,7 +62,7 @@ class Formations
     private $lesmodules;
 
     /**
-     * @ORM\OneToMany(targetEntity=Couvertures::class, mappedBy="formations",cascade={"persist")
+     * @ORM\OneToMany(targetEntity=Couvertures::class, mappedBy="formations",cascade={"persist"})
      */
     private $couvertures;
 
