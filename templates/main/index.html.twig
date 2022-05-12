@@ -102,13 +102,17 @@
 							<div class="widget-chart widget-chart2 text-left mb-3 card-btm-border card-shadow-warning border-warning card">
 								<div class="widget-chat-wrapper-outer">
 									<div class="widget-chart-content">
-										<div class="widget-title opacity-5 text-uppercase">Total temps
+										<div class="widget-title opacity-5 text-uppercase">Temps total passé
 										</div>
 										<div class="widget-numbers mt-2 fsize-4 mb-0 w-100">
 											<div class="widget-chart-flex align-items-center">
 												<div style="font-size: 16px;font-weight: normal;">
 
-													{{app.user.timer}}
+													{% set secondes = (app.user.timer / 1000) % 60 %}
+													{% set minutes = (app.user.timer / (1000*60)) % 60 %}
+													{% set heurs = (minutes / 60) %}
+
+													{{heurs|round(0, 'floor')}}:{{minutes}}:{{secondes}}
 
 												</div>
 

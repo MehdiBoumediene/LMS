@@ -144,11 +144,11 @@ class MainController extends AbstractController
             
             $qb = $em->createQueryBuilder();
             $q = $qb->update('App:Users', 'u')
+            
+                ->set('u.timer','u.timer+?1')
+                
 
-                ->set('u.timer','?1')
-              
-
-                ->setParameter(1,+$timer)
+                ->setParameter(1, $timer)
        
 
                 ->getQuery();

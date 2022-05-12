@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Leschapitres{% endblock %}
+{% block title %}Edit Leschapitres
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Leschapitres</h1>
+	<h1>Edit Leschapitres</h1>
 
-    {{ include('leschapitres/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('leschapitres/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_leschapitres_index') }}">back to list</a>
+	<a href="{{ path('app_leschapitres_index') }}">back to list</a>
 
-    {{ include('leschapitres/_delete_form.html.twig') }}
+	{{ include('leschapitres/_delete_form.html.twig') }}
+	{{ block("Timer", "Menus/timer.html.twig") }}
 {% endblock %}

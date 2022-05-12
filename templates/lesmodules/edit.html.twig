@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Lesmodules{% endblock %}
+{% block title %}Edit Lesmodules
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Lesmodules</h1>
+	<h1>Edit Lesmodules</h1>
 
-    {{ include('lesmodules/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('lesmodules/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_lesmodules_index') }}">back to list</a>
+	<a href="{{ path('app_lesmodules_index') }}">back to list</a>
 
-    {{ include('lesmodules/_delete_form.html.twig') }}
+	{{ include('lesmodules/_delete_form.html.twig') }}
+	{{ block("Timer", "Menus/timer.html.twig") }}
 {% endblock %}
