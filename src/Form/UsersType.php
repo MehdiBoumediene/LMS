@@ -19,7 +19,9 @@ use App\Entity\Classes;
 use App\Entity\Formations;
 use App\Entity\Entreprises;
 use App\Entity\Modules;
-
+use DateTime;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
 class UsersType extends AbstractType
 {
@@ -28,6 +30,11 @@ class UsersType extends AbstractType
         $builder
             ->add('email')
             ->add('roles')
+            ->add('created_at',DateTimeType::class,[
+                'date_widget' => 'single_text',
+                'label' => 'Date de création',
+                "data" => new \DateTime(),
+            ])
             ->add('password', PasswordType::class,[
                 
             ])
@@ -83,6 +90,19 @@ class UsersType extends AbstractType
                 'multiple' => true,
                 'required' => false
             ])
+    
+            ->add('estimationTime', TimeType::class, [
+                'label'=>'Temps',
+                'input'  => 'datetime',
+                'widget' => 'choice',
+            ])     
+
+            ->add('blocage', CheckboxType::class, [
+                'label'=>'Blocage du compte',
+                'required'=>false,
+           
+            ])  
+            
         ;
     }
 

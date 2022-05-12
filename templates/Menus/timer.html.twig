@@ -10,35 +10,38 @@
 
 	<script type="text/javascript" src="{{asset('active-timeout.js')}}"></script>
 	<script type="text/javascript">
+
+
 		var timeout = document.getElementById("timeout"),
 counter = document.getElementById("counter");
 
 ActiveTimeout.count(function (time) {
-counter.innerHTML = time + "ms";
+counter.innerHTML = time;
 return true;
+
 });
-
-
-$(document).ready(function () {
-
 const myTimeout = setInterval(myGreeting, 5000);
 
 function myGreeting() {
+
+ActiveTimeout.count(function (time) {
+counter.innerHTML = time;
+return true;
+
+});
 
 $.ajax({
 method: "GET",
 url: "{{ path('app_timer') }}",
 data: {
-timer: counter.innerHTML.slice(0, -2)
+timer: counter.innerHTML
 },
 success: function (reponse) { // $('#magasinDatas').html(data);
 console.log(reponse);
+
 }
 });
 }
-
-
-});
 	</script>
 
 

@@ -129,11 +129,7 @@ class MainController extends AbstractController
     public function timer(UsersRepository $user, EntityManagerInterface $em, Request $request): Response
     {
     
-
         $timer = $request->query->get('timer');
-            
-
-
         $response = new JsonResponse();
 
      
@@ -144,13 +140,8 @@ class MainController extends AbstractController
             
             $qb = $em->createQueryBuilder();
             $q = $qb->update('App:Users', 'u')
-            
                 ->set('u.timer','u.timer+?1')
-                
-
                 ->setParameter(1, $timer)
-       
-
                 ->getQuery();
             $p = $q->execute();
                 

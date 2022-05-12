@@ -47,7 +47,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $isVerified = false;
 
     /**
-     * @ORM\Column(type="datetime_immutable", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $created_at;
 
@@ -161,7 +161,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $timer;
+    private $timer = 0;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -177,6 +177,16 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=Leschapitres::class, mappedBy="users")
      */
     private $leschapitres;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $blocage;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $estimationTime;
 
 
 
@@ -303,12 +313,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(?\DateTimeImmutable $created_at): self
+    public function setCreatedAt(?\DateTime $created_at): self
     {
         $this->created_at = $created_at;
 
@@ -889,6 +899,30 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
                 $leschapitre->setUsers(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBlocage(): ?bool
+    {
+        return $this->blocage;
+    }
+
+    public function setBlocage(?bool $blocage): self
+    {
+        $this->blocage = $blocage;
+
+        return $this;
+    }
+
+    public function getEstimationTime(): ?\DateTimeInterface
+    {
+        return $this->estimationTime;
+    }
+
+    public function setEstimationTime(?\DateTimeInterface $estimationTime): self
+    {
+        $this->estimationTime = $estimationTime;
 
         return $this;
     }
