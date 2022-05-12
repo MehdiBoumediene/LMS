@@ -12,8 +12,14 @@
 		</div>
 		<div class="col-md-3">
 
-			{{ form_row(form.modules,{'attr': {'class': 'form-control'}}) }}
-			{{ form_errors(form.modules) }}
+			{{ form_row(form.lesmodules,{'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.lesmodules) }}
+		</div>
+
+		<div class="col-md-3">
+
+			{{ form_row(form.temps,{'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.temps) }}
 		</div>
 
 		<div class="col-md-6">
@@ -23,21 +29,17 @@
 	</div>
 	<br>
 	<div class="row">
-		<div class="col-md-3">
 
-			{{ form_row(form.couvertures,{'attr': {'class': ''}}) }}
-			{{ form_errors(form.couvertures) }}
-		</div>
 		<div class="col-md-3">
 
 			{{ form_label(form.files, 'Nom du document', {'label_attr': {'class': 'foo'}}) }}
-			<input type="text" name="nomFile" id="nomFile" class="form-control"><br>
+
 			{{ form_row(form.files,{'attr': {'class': ''}}) }}
 			{{ form_errors(form.files) }}
 		</div>
 		<div class="col-md-3">
 			{{ form_label(form.files, 'Nom de la video', {'label_attr': {'class': 'foo'}}) }}
-			<input type="text" name="nomVideo" id="nomVideo" class="form-control"><br>
+
 			{{ form_row(form.medias,{'attr': {'class': ''}}) }}
 			{{ form_errors(form.medias) }}
 		</div>

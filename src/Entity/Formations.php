@@ -61,12 +61,24 @@ class Formations
      */
     private $lesmodules;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Couvertures::class, mappedBy="formations")
+     */
+    private $couvertures;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Blocs::class, mappedBy="formations")
+     */
+    private $blocs;
+
     public function __construct()
     {
         $this->module = new ArrayCollection();
         $this->users = new ArrayCollection();
         $this->leschapitres = new ArrayCollection();
         $this->lesmodules = new ArrayCollection();
+        $this->couvertures = new ArrayCollection();
+        $this->blocs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -233,6 +245,66 @@ class Formations
             // set the owning side to null (unless already changed)
             if ($lesmodule->getFormations() === $this) {
                 $lesmodule->setFormations(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Couvertures>
+     */
+    public function getCouvertures(): Collection
+    {
+        return $this->couvertures;
+    }
+
+    public function addCouverture(Couvertures $couverture): self
+    {
+        if (!$this->couvertures->contains($couverture)) {
+            $this->couvertures[] = $couverture;
+            $couverture->setFormations($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCouverture(Couvertures $couverture): self
+    {
+        if ($this->couvertures->removeElement($couverture)) {
+            // set the owning side to null (unless already changed)
+            if ($couverture->getFormations() === $this) {
+                $couverture->setFormations(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Blocs>
+     */
+    public function getBlocs(): Collection
+    {
+        return $this->blocs;
+    }
+
+    public function addBloc(Blocs $bloc): self
+    {
+        if (!$this->blocs->contains($bloc)) {
+            $this->blocs[] = $bloc;
+            $bloc->setFormations($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBloc(Blocs $bloc): self
+    {
+        if ($this->blocs->removeElement($bloc)) {
+            // set the owning side to null (unless already changed)
+            if ($bloc->getFormations() === $this) {
+                $bloc->setFormations(null);
             }
         }
 

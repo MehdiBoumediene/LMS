@@ -21,7 +21,15 @@ class FormationsType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-          
+            ->add('couvertures',FileType::class,[
+                'label'=> 'Photo de couverture',
+                'multiple' => true,
+                'mapped'=> false,
+                'required'=> false,
+        
+              
+    
+            ])
         ;
     }
 

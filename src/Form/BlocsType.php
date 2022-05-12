@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityRepository;
 use App\Entity\Classes;
+use App\Entity\Formations;
 
 
 class BlocsType extends AbstractType
@@ -19,8 +20,8 @@ class BlocsType extends AbstractType
             ->add('nom')
             ->remove('created_at')
             ->remove('created_by')
-            ->add('Classe', EntityType::class, [
-                'class' => Classes::class,
+            ->add('formations', EntityType::class, [
+                'class' => Formations::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.nom', 'ASC');

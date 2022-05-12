@@ -27,6 +27,7 @@ class LeschapitresType extends AbstractType
     {
         $builder
         ->add('nom')
+        ->add('temps')
         ->add('description',TextareaType::class)
         ->remove('created_at')
         ->remove('created_by')
@@ -48,14 +49,14 @@ class LeschapitresType extends AbstractType
             'choice_label' => 'nom',
         ])
         
-        ->add('modules', EntityType::class, [
+        ->add('lesmodules', EntityType::class, [
             'class' => Lesmodules::class,
             'query_builder' => function (EntityRepository $er) {
                 return $er->createQueryBuilder('u')
                     ->orderBy('u.nom', 'ASC');
             },
             'choice_label' => 'nom',
-            'multiple' => true,
+            'multiple' => false,
         ])
 
         ->add('files',FileType::class,[
@@ -77,15 +78,7 @@ class LeschapitresType extends AbstractType
 
         ])
 
-        ->add('couvertures',FileType::class,[
-            'label'=> 'Photo de couverture',
-            'multiple' => true,
-            'mapped'=> false,
-            'required'=> false,
-    
-          
 
-        ])
         ->add('formations', EntityType::class, [
             'class' => Formations::class,
             

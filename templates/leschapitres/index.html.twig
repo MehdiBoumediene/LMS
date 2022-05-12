@@ -50,6 +50,9 @@
 												<tr role="row">
 
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Nom</th>
+													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Temps</th>
+													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Module</th>
+													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Formation</th>
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Date de création</th>
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Créé par</th>
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 110.2px;" aria-label="Start date: activate to sort column ascending">actions</th>
@@ -64,6 +67,21 @@
 
 														<td class="sorting_1 dtr-control">
 															<a href="{{ path('app_leschapitres_show', {'id': chapitre.id}) }}">{{ chapitre.nom }}</a>
+														</td>
+														<td class="sorting_1 dtr-control">
+
+															{{ chapitre.temps }}
+
+														</td>
+
+														<td class="sorting_1 dtr-control">
+
+															<a href="{{ path('app_lesmodules_show', {'id': chapitre.lesmodules.id}) }}">{{ chapitre.lesmodules.nom }}</a>
+
+														</td>
+
+														<td class="sorting_1 dtr-control">
+															<a href="{{ path('app_formations_show', {'id': chapitre.formations.id}) }}">{{ chapitre.formations.nom }}</a>
 														</td>
 
 														<td class="sorting_1 dtr-control">

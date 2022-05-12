@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\ORM\EntityRepository;
 use App\Entity\Formations;
+use App\Entity\Blocs;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class LesmodulesType extends AbstractType
@@ -18,6 +19,15 @@ class LesmodulesType extends AbstractType
             ->add('nom')
             ->add('formations', EntityType::class, [
                 'class' => Formations::class,
+                
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.nom', 'ASC');
+                },
+                'choice_label' => 'nom',
+            ])
+            ->add('blocs', EntityType::class, [
+                'class' => Blocs::class,
                 
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')

@@ -39,7 +39,7 @@
 						Menu</li>
 					<li>
 						<a href="{{path('app_main')}}" {% if route_name == "app_main" %} class="mm-active" {% else %} class=" " {% endif %} aria-expanded="false">
-							<i class="metismenu-icon pe-7s-diamond"></i>Dashboard
+							<i class="metismenu-icon pe-7s-diamond"></i>Tableau de bord
 						</a>
 					</li>
 					{% if is_granted('ROLE_ADMIN') %}
@@ -52,6 +52,11 @@
 							<li>
 								<a href="{{path('app_formations_index')}}" {% if route_name == "app_formations_index" %} class="mm-active" {% elseif route_name == "app_formations_new" %} class="mm-active" {% elseif route_name == "app_formations_edit" %} class="mm-active" {% elseif route_name == "app_formations_show" %} class="mm-active" {% else %} class=" " {% endif %}>
 									<i class="metismenu-icon pe-7s-display2"></i>Liste des formations<i class="metismenu-state-icon "></i>
+								</a>
+							</li>
+							<li>
+								<a href="{{path('app_blocs_index')}}" {% if route_name == "app_blocs_index" %} class="mm-active" {% elseif route_name == "app_blocs_new" %} class="mm-active" {% elseif route_name == "app_blocs_edit" %} class="mm-active" {% elseif route_name == "app_blocs_show" %} class="mm-active" {% else %} class=" " {% endif %}>
+									<i class="metismenu-icon pe-7s-display2"></i>Liste des blocs<i class="metismenu-state-icon "></i>
 								</a>
 							</li>
 							<li>
@@ -68,7 +73,7 @@
 
 							<li>
 								<a href="{{path('app_etudiants_index')}}" {% if route_name == "app_etudiants_index" %} class="mm-active" {% elseif route_name == "app_etudiants_new" %} class="mm-active" {% elseif route_name == "app_etudiants_edit" %} class="mm-active" {% elseif route_name == "app_etudiants_show" %} class="mm-active" {% else %} class=" " {% endif %}>
-									<i class="metismenu-icon pe-7s-display2"></i>Liste des étudiants<i class="metismenu-state-icon "></i>
+									<i class="metismenu-icon pe-7s-display2"></i>Liste des apprenants<i class="metismenu-state-icon "></i>
 								</a>
 							</li>
 

@@ -41,10 +41,9 @@ class LeschapitresController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
            // Je récupère les videos transmises
            $videos = $form->get('medias')->getData();
-           $couvertures = $form->get('couvertures')->getData();
+        
            $files = $form->get('files')->getData();
-           $nomFile = $_POST["nomFile"];
-           $nomVideo = $_POST["nomVideo"];
+        
            // Je boucle sur les videos
            foreach($videos as $video){
                // Je génère un nouveau nom de fichier
@@ -59,30 +58,12 @@ class LeschapitresController extends AbstractController
                // Je stocke la video dans la BDD (nom du fichier)
                $media= new Medias();
                $media->setName($fichier);
-               $media->setNom($nomVideo);
+               $media->setNom($fichier);
                $leschapitre->addMedia($media);
 
            }
 
-            // Je boucle sur les couvertures
-            foreach($couvertures as $couverture){
-               // Je génère un nouveau nom de fichier
-               $fichier = md5(uniqid()) . '.' . $couverture->guessExtension();
-
-               // Je copie le fichier dans le dossier uploads
-               $couverture->move(
-                   $this->getParameter('videos_directory'),
-                   $fichier
-               );
-
-               // Je stocke la photo dans la BDD (nom du fichier)
-               $image= new Couvertures();
-               $image->setName($fichier);
-               $leschapitre->addCouverture($image);
-
-           }
-
-
+    
             // Je boucle sur les documents
             foreach($files as $file){
                 $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -99,7 +80,7 @@ class LeschapitresController extends AbstractController
                // Je stocke le document dans la BDD (nom du fichier)
                $file= new Files();
                $file->setName($fichier);
-               $file->setNom($nomFile);
+               $file->setNom($fichier);
                $leschapitre->addFile($file);
 
            }
