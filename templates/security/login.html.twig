@@ -39,51 +39,26 @@
 			<div class="app-container">
 				<div class="h-100">
 					<div class="h-100 no-gutters row">
-						<div class="d-none d-lg-block col-lg-4">
-							<div class="slider-light">
-								<div class="slick-slider" style="width:100%;">
-									<div>
-										<div class="position-relative h-100 d-flex justify-content-center align-items-center " tabindex="-1">
-											<div class="slide-img-bg" style="background-image: url('assets/images/originals/3.svg');"></div>
-											<div class="slider-content"></div>
-										</div>
 
-
-									</div>
-
-									<div>
-										<div class="position-relative h-100 d-flex justify-content-center align-items-center " tabindex="-1">
-											<div class="slide-img-bg" style="background-image: url('assets/images/originals/1.svg');"></div>
-											<div class="slider-content"></div>
-										</div>
-
-
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="h-100 d-flex bg-white justify-content-center align-items-center col-md-12 col-lg-8">
-							<div class="mx-auto app-login-box col-sm-12 col-md-10 col-lg-9">
-								<h1>LMS
+						<div class="h-100 d-flex bg-white justify-content-center align-items-center col-md-12 col-lg-12">
+							<div class="mx-auto app-login-box col-sm-12 col-md-10 col-lg-9" style="text-align:center;">
+								<h1><img src="{{asset('logosigma.svg')}}" width="200">
 								</h1><br>
-								<h4 class="mb-0">
-									<span class="d-block">Bienvenu,</span>
-									<span>Connectez-vous à votre compte s'il vous plaît.</span>
-								</h4>
+
 
 								<div class="divider row"></div>
 								<div>
 									<form class="">
 										<div class="form-row">
 											<div class="col-md-6">
-												<div class="position-relative form-group">
+												<div class="position-relative form-group" style="text-align:left;">
 													<label for="exampleEmail" class="">Email</label>
 													<input type="email" value="{{ last_username }}" name="email" id="exampleEmail" placeholder="E-mail ici..." class="form-control" autocomplete="email" required autofocus>
 
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="position-relative form-group">
+												<div class="position-relative form-group" style="text-align:left;">
 													<label for="examplePassword" class="">Password</label>
 													<input type="password" name="password" id="examplePassword" placeholder="Mot de passe ici..." class="form-control" autocomplete="current-password" required>
 
@@ -92,7 +67,7 @@
 											</div>
 										</div>
 
-										<div class="position-relative form-check">
+										<div class="position-relative form-check" style="text-align:left;">
 
 											<input name="_remember_me" id="exampleCheck" type="checkbox" class="form-check-input">
 											<label for="exampleCheck" class="form-check-label">Se souvenir de moi</label>

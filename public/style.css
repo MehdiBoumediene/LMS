@@ -30,3 +30,11 @@ a {
   color: #434344 !important;
 
 }
+.formations{
+
+  background: black;
+  color: white;
+  height: 60px;
+  padding: 20px;
+  text-align: center;
+}

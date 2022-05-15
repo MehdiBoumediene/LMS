@@ -30,17 +30,7 @@ class ModulesController extends AbstractController
         ]);
     }
 
-     /**
-     * @Route("/formations", name="app_formations", methods={"GET"})
-     */
-    public function formations(LeschapitresRepository $LeschapitresRepository): Response
-    {
-    
-
-        return $this->render('modules/formations.html.twig', [
-            'chapitres' => $LeschapitresRepository->findAll(),
-        ]);
-    }
+  
 
     /**
      * @Route("/new", name="app_modules_new", methods={"GET", "POST"})

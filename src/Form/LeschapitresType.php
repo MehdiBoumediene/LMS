@@ -31,7 +31,8 @@ class LeschapitresType extends AbstractType
         ->add('description',TextareaType::class)
         ->remove('created_at')
         ->remove('created_by')
-        ->remove('bloc', EntityType::class, [
+
+        ->add('bloc', EntityType::class, [
             'class' => Blocs::class,
             'query_builder' => function (EntityRepository $er) {
                 return $er->createQueryBuilder('u')
