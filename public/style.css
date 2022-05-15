@@ -36,7 +36,9 @@ a {
 
   background: black;
   color: white;
-  height: 60px;
+  height: auto;
   padding: 10px;
   text-align: center;
+  display: flex;
+
 }
