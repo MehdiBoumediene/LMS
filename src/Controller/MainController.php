@@ -133,7 +133,7 @@ class MainController extends AbstractController
         $heur = $request->query->get('heur');
         $minutes = $request->query->get('minutes');
         $secondes = $request->query->get('secondes');
-        $temps = "$heur"."$minutes"."$secondes";
+        $temps = (intval($heur)/1000*60*60%24)+(intval($minutes)/1000*60%60)+(intval($secondes)/1000%60);
         $response = new JsonResponse();
 
      
