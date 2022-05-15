@@ -84,14 +84,14 @@ class LeschapitresController extends AbstractController
     }
 
     /**
-     * @Route("/modulesblocs/{id}", name="app_modulesblocs", methods={"GET"})
+     * @Route("/moduleschapitres/{id}", name="app_moduleschapitres", methods={"GET"})
      */
-    public function moduleschapitres(LeschapitresRepository $leschapitresRepository, $id): Response
+    public function moduleschapitres(LesmodulesRepository $lesmodulesRepository, $id): Response
     {
     
 
         return $this->render('modules/moduleschapitres.html.twig', [
-            'modules' => $leschapitresRepository->findBy(['lesmodules'=>$id]),
+            'modules' => $lesmodulesRepository->findBy(['formations'=>$id]),
         ]);
     }
 
