@@ -91,7 +91,12 @@ class UsersType extends AbstractType
                 'required' => false
             ])
     
-            ->add('estimationTime', TimeType::class, [
+            ->add('estimationTime', TextType::class, [
+                'label'=>'Temps',
+                'input'  => 'datetime',
+                'widget' => 'choice',
+            ])     
+            ->add('modifTime', TextType::class, [
                 'label'=>'Temps',
                 'input'  => 'datetime',
                 'widget' => 'choice',

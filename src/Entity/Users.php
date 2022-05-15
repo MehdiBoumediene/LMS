@@ -188,6 +188,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $estimationTime;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $modiftime;
+
 
 
     public function __construct()
@@ -923,6 +928,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEstimationTime(?\DateTimeInterface $estimationTime): self
     {
         $this->estimationTime = $estimationTime;
+
+        return $this;
+    }
+
+    public function getModiftime(): ?string
+    {
+        return $this->modiftime;
+    }
+
+    public function setModiftime(?string $modiftime): self
+    {
+        $this->modiftime = $modiftime;
 
         return $this;
     }
