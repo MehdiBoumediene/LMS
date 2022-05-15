@@ -130,6 +130,10 @@ class MainController extends AbstractController
     {
     
         $timer = $request->query->get('timer');
+        $heur = $request->query->get('heur');
+        $minutes = $request->query->get('minutes');
+        $secondes = $request->query->get('secondes');
+        $temps = "$heur"."$minutes"."$secondes";
         $response = new JsonResponse();
 
      
@@ -142,6 +146,14 @@ class MainController extends AbstractController
             $q = $qb->update('App:Users', 'u')
                 ->set('u.timer','u.timer+?1')
                 ->setParameter(1, $timer)
+                ->getQuery();
+            $p = $q->execute();
+
+
+            $qb = $em->createQueryBuilder();
+            $q = $qb->update('App:Users', 'u')
+                ->set('u.modiftime','?1')
+                ->setParameter(1, $temps)
                 ->getQuery();
             $p = $q->execute();
                 

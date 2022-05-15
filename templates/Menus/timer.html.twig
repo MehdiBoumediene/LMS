@@ -34,7 +34,11 @@ $.ajax({
 method: "GET",
 url: "{{ path('app_timer') }}",
 data: {
-timer: counter.innerHTML
+timer: counter.innerHTML,
+heur: $('.heur').text(),
+minutes: $('.minutes').text(),
+secondes: $('.secondes').text()
+
 },
 success: function (reponse) { // $('#magasinDatas').html(data);
 console.log(reponse);

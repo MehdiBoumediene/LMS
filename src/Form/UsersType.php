@@ -30,6 +30,7 @@ class UsersType extends AbstractType
         $builder
             ->add('email')
             ->add('roles')
+            ->add('modiftime')
             ->add('created_at',DateTimeType::class,[
                 'date_widget' => 'single_text',
                 'label' => 'Date de création',
@@ -91,12 +92,7 @@ class UsersType extends AbstractType
                 'required' => false
             ])
     
-            ->add('estimationTime', TextType::class, [
-                'label'=>'Temps',
-                'input'  => 'datetime',
-                'widget' => 'choice',
-            ])     
-            ->add('modifTime', TextType::class, [
+            ->remove('estimationTime', TimeType::class, [
                 'label'=>'Temps',
                 'input'  => 'datetime',
                 'widget' => 'choice',
