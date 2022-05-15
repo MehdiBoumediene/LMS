@@ -1,5 +1,7 @@
 .app-header.header-text-light .app-header__logo .logo-src {
   background: url(assets/logoWhite.svg) !important;
+  background-repeat: no-repeat !important;
+  width: 200px;
 }
 .app-header__logo .logo-src {
   height: 50px;
@@ -35,6 +37,6 @@ a {
   background: black;
   color: white;
   height: 60px;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
 }
