@@ -52,8 +52,9 @@
 																				{% for chapitre in module.leschapitres %}
 																					<li>
 																						<a href="{{path('app_leschapitres_show',{id:module.id})}}">{{chapitre.nom}}</a>
+
 																					</li>
-																				{% endfor %}
+																				{% endfor %}g
 																			</ol>
 
 																		</li>
@@ -86,5 +87,5 @@
 		</div>
 	</div>
 	{{ block("Footer", "Menus/Footer.html.twig") }}
-	
+
 {% endblock %}
