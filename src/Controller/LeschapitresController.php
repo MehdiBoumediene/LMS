@@ -7,6 +7,7 @@ use App\Entity\Files;
 use App\Entity\Lesmodules;
 use App\Entity\Couvertures;
 use App\Entity\Medias;
+use App\Entity\Times;
 use App\Form\LeschapitresType;
 use App\Repository\LeschapitresRepository;
 use App\Repository\BlocsRepository;
@@ -100,8 +101,13 @@ class LeschapitresController extends AbstractController
      */
     public function show(Leschapitres $leschapitre): Response
     {
+
+        $timer = $this->getDoctrine()->getRepository(Times::class)->findOneBy(['user'=> $this->getUser()]) ;            
+
+
         return $this->render('modules/show.html.twig', [
             'module' => $leschapitre,
+            'timer' => $timer,
         ]);
     }
 

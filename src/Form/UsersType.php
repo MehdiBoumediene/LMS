@@ -30,7 +30,7 @@ class UsersType extends AbstractType
         $builder
             ->add('email')
             ->add('roles')
-            ->add('modiftime')
+            ->remove('modiftime')
             ->add('created_at',DateTimeType::class,[
                 'date_widget' => 'single_text',
                 'label' => 'Date de création',

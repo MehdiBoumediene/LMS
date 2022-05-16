@@ -84,10 +84,16 @@
 								</a>
 							</li>
 							<li>
+								<a href="{{path('app_times_index')}}" {% if route_name == "app_times_index" %} class="mm-active" {% elseif route_name == "app_times_edit" %} class="mm-active" {% elseif route_name == "app_times_new" %} {% elseif route_name == "app_times_show" %} class="mm-active" {% else %} class=" " {% endif %}>
+									<i class="metismenu-icon pe-7s-display2"></i>Temps de connexion<i class="metismenu-state-icon "></i>
+								</a>
+							</li>
+							<li>
 								<a href="{{path('app_gestion_calendrier')}}" {% if route_name == "app_gestion_calendrier" %} class="mm-active" {% elseif route_name == "app_calendrier_show" %} class="mm-active" {% elseif route_name == "app_calendrier_new" %} class="mm-active" {% else %} class=" " {% endif %}>
 									<i class="metismenu-icon pe-7s-display2"></i>Gestion calendrier<i class="metismenu-state-icon "></i>
 								</a>
 							</li>
+
 
 							<li>
 								<a href="{{path('app_telechargements_index')}}" {% if route_name == "app_telechargements_index" %} class="mm-active" {% elseif route_name == "app_telechargements_new" %} class="mm-active" {% elseif route_name == "app_telechargements_edit" %} class="mm-active" {% elseif route_name == "app_telechargements_show" %} class="mm-active" {% else %} class=" " {% endif %}>

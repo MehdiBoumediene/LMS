@@ -86,6 +86,11 @@ class Leschapitres
      */
     private $temps;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Times::class, mappedBy="chapitre")
+     */
+    private $times;
+
 
 
     public function __construct()
@@ -93,6 +98,7 @@ class Leschapitres
         $this->medias = new ArrayCollection();
         $this->couvertures = new ArrayCollection();
         $this->files = new ArrayCollection();
+        $this->times = new ArrayCollection();
      
     }
 
@@ -307,6 +313,36 @@ class Leschapitres
     public function setTemps(?string $temps): self
     {
         $this->temps = $temps;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Times>
+     */
+    public function getTimes(): Collection
+    {
+        return $this->times;
+    }
+
+    public function addTime(Times $time): self
+    {
+        if (!$this->times->contains($time)) {
+            $this->times[] = $time;
+            $time->setChapitre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTime(Times $time): self
+    {
+        if ($this->times->removeElement($time)) {
+            // set the owning side to null (unless already changed)
+            if ($time->getChapitre() === $this) {
+                $time->setChapitre(null);
+            }
+        }
 
         return $this;
     }

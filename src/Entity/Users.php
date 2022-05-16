@@ -193,6 +193,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $modiftime;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Times::class, mappedBy="user")
+     */
+    private $times;
+
 
 
     public function __construct()
@@ -213,6 +218,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->telechargements = new ArrayCollection();
         $this->formations = new ArrayCollection();
         $this->leschapitres = new ArrayCollection();
+        $this->times = new ArrayCollection();
       
     }
 
@@ -940,6 +946,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setModiftime(?string $modiftime): self
     {
         $this->modiftime = $modiftime;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Times>
+     */
+    public function getTimes(): Collection
+    {
+        return $this->times;
+    }
+
+    public function addTime(Times $time): self
+    {
+        if (!$this->times->contains($time)) {
+            $this->times[] = $time;
+            $time->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTime(Times $time): self
+    {
+        if ($this->times->removeElement($time)) {
+            // set the owning side to null (unless already changed)
+            if ($time->getUser() === $this) {
+                $time->setUser(null);
+            }
+        }
 
         return $this;
     }

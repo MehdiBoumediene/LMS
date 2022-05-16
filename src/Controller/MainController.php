@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\Users;
+use App\Entity\Times;
 use App\Repository\CalendrierRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -123,7 +124,7 @@ class MainController extends AbstractController
 
 
 
-       /**
+    /**
      * @Route("/timer", name="app_timer", methods={"GET", "POST"})
      */
     public function timer(UsersRepository $user, EntityManagerInterface $em, Request $request): Response
@@ -133,7 +134,7 @@ class MainController extends AbstractController
         $heur = $request->query->get('heur');
         $minutes = $request->query->get('minutes');
         $secondes = $request->query->get('secondes');
-        $temps = (intval($heur)/1000*60*60%24)+(intval($minutes)/1000*60%60)+(intval($secondes)/1000%60);
+      
         $response = new JsonResponse();
 
      
@@ -151,9 +152,68 @@ class MainController extends AbstractController
 
 
             $qb = $em->createQueryBuilder();
-            $q = $qb->update('App:Users', 'u')
-                ->set('u.modiftime','?1')
-                ->setParameter(1, $temps)
+            $q = $qb->update('App:Times', 'u')
+                ->set('u.heur','?1')
+                ->set('u.minutes','?2')
+                ->set('u.secondes','?3')
+                ->setParameter(1, $heur)
+                ->setParameter(2, $minutes)
+                ->setParameter(3, $secondes)
+                ->getQuery();
+            $p = $q->execute();
+                
+        }
+
+
+        $response->headers->set('Content-Type','application/json');
+        return $response->setData(array(
+            'data'=>$timer,
+      
+
+        ));
+    }
+
+    
+    /**
+     * @Route("/timerchapitre", name="app_timerchapitre", methods={"GET", "POST"})
+     */
+    public function timerchapitre(UsersRepository $user, EntityManagerInterface $em, Request $request): Response
+    {
+    
+        $timer = $request->query->get('timer');
+        $heur = $request->query->get('heur');
+        $minutes = $request->query->get('minutes');
+        $secondes = $request->query->get('secondes');
+      
+        $response = new JsonResponse();
+
+     
+
+        $user = $this->getDoctrine()->getRepository(Times::class)->findOneBy(['user'=> $this->getUser()]) ;            
+        if( $user)
+        {
+            
+            $qb = $em->createQueryBuilder();
+            $q = $qb->update('App:Times', 'u')
+                ->set('u.timer','u.timer+?1')
+                
+                ->setParameter(1, $timer)
+             
+               
+                ->getQuery();
+            $p = $q->execute();
+
+
+            $qb = $em->createQueryBuilder();
+            $q = $qb->update('App:Times', 'u')
+                ->set('u.heur','?1')
+                ->set('u.minutes','?2')
+                ->set('u.secondes','?3')
+              
+                ->setParameter(1, $heur)
+                ->setParameter(2, $minutes)
+                ->setParameter(3, $secondes)
+               
                 ->getQuery();
             $p = $q->execute();
                 

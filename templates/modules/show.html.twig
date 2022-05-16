@@ -58,21 +58,40 @@
 				<div class="tabs-animation">
 					<div class="row ">
 						<div class="col-md-6 ">
-							<h5 style="font-size:15px; font-weight: bold;">Formation:
-								<span style="font-size:15px; font-weight: normal;">{{module.formations.nom}}</span>
+
+							<h5 style="font-size:15px; font-weight: bold;">Temps de conexion:
+								<span style="font-size:15px; font-weight: normal;">
+
+									{% set heur = (timer.timer / (1000*60*60)) % 24 %}
+									{% set minutes = (timer.timer / (1000*60)) % 60 %}
+									{% set secondes = (timer.timer / 1000) % 60 %}
+									<br><tr>
+										<span class="heur">
+
+											{{ heur }}
+											Heures</span>
+									</tr>
+								</td>
+								<td>
+									<span class="minutes">
+										{{ minutes}}
+										Minutes</span>
+								</td>
+								<td>
+									<span class="secondes">
+										{{ secondes }}
+										Secondes</span>
+								</td>
+								<tr></tr>
 							</h5>
-							<h5 style="font-size:15px; font-weight: bold;">Description de la formation:
-								<span style="font-size:15px; font-weight: normal;">{{module.formations.description|raw()}}</span>
-							</h5>
+
 						</div>
 
 						<div class="col-md-6">
-							<h5 style="font-size:15px; font-weight: bold;">Module:
+							<h5 style="font-size:15px; font-weight: bold;">Chapitre:
 								<span style="font-size:15px; font-weight: normal;">{{module.nom}}</span>
 							</h5>
-							<h5 style="font-size:15px; font-weight: bold;">Description du module:
-								<span style="font-size:15px; font-weight: normal;">{{module.description|raw()}}</span>
-							</h5>
+
 						</div>
 
 					</div>
@@ -184,6 +203,6 @@
 			</div>
 
 			{{ block("Footer", "Menus/Footer.html.twig") }}
-
+			{{ block("Timer", "Menus/timerChapitre.html.twig") }}
 
 		{% endblock %}
