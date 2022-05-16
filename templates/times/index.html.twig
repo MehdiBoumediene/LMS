@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modules
+{% block title %}Temps de conexion
 {% endblock %}
 
 {% block body %}
@@ -51,6 +51,7 @@
 												<tr role="row">
 
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">User</th>
+													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Chapitre</th>
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Heur</th>
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Minutes</th>
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Secondes</th>
@@ -67,6 +68,9 @@
 
 														<td class="sorting_1 dtr-control">
 															<a href="{{ path('app_users_show', {'id': time.user.id}) }}">{{ time.user.email }}</a>
+														</td>
+														<td class="sorting_1 dtr-control">
+															<a href="{{ path('app_users_show', {'id': time.chapitre.id}) }}">{{ time.chapitre }}</a>
 														</td>
 														<td class="sorting_1 dtr-control">
 															<a href="{{ path('app_times_edit', {'id': time.id}) }}">{{ time.heur }}</a>
