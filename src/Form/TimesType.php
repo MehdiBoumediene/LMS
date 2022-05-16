@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Classes;
@@ -30,7 +31,7 @@ class TimesType extends AbstractType
             ->add('heur')
             ->add('minutes')
             ->add('secondes')
-            ->add('timer')
+            ->add('timer',HiddenType::class)
             ->add('user', EntityType::class, [
                 'class' => Users::class,
                 'query_builder' => function (EntityRepository $er) {
