@@ -85,7 +85,7 @@
 							</li>
 							<li>
 								<a href="{{path('app_times_index')}}" {% if route_name == "app_times_index" %} class="mm-active" {% elseif route_name == "app_times_edit" %} class="mm-active" {% elseif route_name == "app_times_new" %} {% elseif route_name == "app_times_show" %} class="mm-active" {% else %} class=" " {% endif %}>
-									<i class="metismenu-icon pe-7s-display2"></i>Temps de connexion<i class="metismenu-state-icon "></i>
+									<i class="metismenu-icon pe-7s-display2"></i>Gestion du temps<i class="metismenu-state-icon "></i>
 								</a>
 							</li>
 							<li>
@@ -116,10 +116,10 @@
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul>
-								<li><a href="{{path('app_formationshow')}}"{% if route_name == "app_formationshow" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Mes formations<i class="metismenu-state-icon "></i></a></li>
+								<li><ahref="{{path('app_formationshow')}}"{% if route_name == "app_formationshow" %} class="mm-active"{% else %} class=" "{% endif %}><i class="metismenu-icon pe-7s-display2"></i>Mes formations<i class="metismenu-state-icon "></i></a></li>
 
-								<li><a href="{{path('app_telechargements_index')}}"><i class="metismenu-icon pe-7s-display2"></i>Exercices & Corrections<i class="metismenu-state-icon "></i></a></li>
-								<li><a href="{{path('app_calendrier_etudiant')}}"><i class="metismenu-icon pe-7s-display2"></i>Mon calendrier<i class="metismenu-state-icon "></i></a></li>
+								<li><ahref="{{path('app_telechargements_index')}}"><i class="metismenu-icon pe-7s-display2"></i>Exercices & Corrections<i class="metismenu-state-icon "></i></a></li>
+								<li><ahref="{{path('app_calendrier_etudiant')}}"><i class="metismenu-icon pe-7s-display2"></i>Mon calendrier<i class="metismenu-state-icon "></i></a></li>
 
 							</ul>
 						</li>
