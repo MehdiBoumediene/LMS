@@ -5,8 +5,33 @@
 {% endblock %}
 {% block body %}
 	<style>
-		ol {
-			list-style-type: none;
+
+		.accordion {
+			background-color: #eee;
+			color: #444;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			transition: 0.4s;
+		}
+
+		.active,
+		.accordion:hover {
+			background-color: #ccc;
+		}
+
+		.panel {
+			padding: 0 18px;
+			display: none;
+			background-color: white;
+			overflow: hidden;
+		}
+		.accordion {
+			margin: 10px;
 		}
 	</style>
 	{{ block("MenuTop", "Menus/MenuTop.html.twig") }}
@@ -37,77 +62,56 @@
 							<div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
 								<div class="row">
 									<div class="col-md-12">
+
 										{% for module in modules %}
+
 											{% for bloc in module.formations.blocs %}
-
-												<div class="card-body">
-													<div id="accordion{{bloc.id}}" class="accordion-wrapper mb-3">
-														<div class="card">
-															<div id="headingOne" class="card-header" style="    background: #21427c;">
-																<button type="button" style="color:white;" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
-																	<h5 class="m-0 p-0">{{bloc.nom}}</h5>
-																</button>
-															</div>
-															{% for module in modules %}
-																<div class="card-body">
-																	<div id="accordion{{module.id}}" class="accordion-wrapper mb-3">
-																		<div class="card">
-																			<div id="headingOne" class="card-header">
-																				<button type="button" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
-																					<h5 class="m-0 p-0">{{module.nom}}</h5>
-																				</button>
-																			</div>
-																			<div data-parent="#accordion{{module.id}}" id="collapseOne1" aria-labelledby="headingOne" class="collapse" style="">
-																				<div class="card-body">
-																					<div data-parent="#accordion{{module.id}}" id="collapseOne1" aria-labelledby="headingOne" class="collapse" style="">
-																						<div class="card-body">
-																							{% for chapitre in module.leschapitres %}
-																								<div id="accordion{{chapitre.id}}" class="accordion-wrapper mb-3">
-																									<div class="card">
-																										<div id="headingOne" class="card-header">
-																											<button type="button" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
-																												<h5 class="m-0 p-0">{{chapitre.nom}}</h5>
-																											</button>
-																										</div>
-																										<div data-parent="#accordion{{chapitre.id}}" id="collapseOne1" aria-labelledby="headingOne" class="collapse" style="">
-																											<div class="card-body"></div>
-																										</div>
-																									</div>
-
-
-																								</div>
-																							{% endfor %}
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-
-
-																	</div>
-
-																{% endfor %}
-															</div>
-
-
+												<button class="accordion">{{bloc.nom}}</button>
+												<div class="panel">
+													{% for module in modules %}
+														<button class="accordion">{{module.nom}}</button>
+														<div class="panel">
+															{% for chapitre in module.leschapitres %}
+																<a href="{{path('app_leschapitres_show',{id:chapitre.id })}}">
+																	<button class="accordion">{{chapitre.nom}}</button>
+																	<div class="panel"></div>
+																</a>
+															{% endfor %}
 														</div>
-													</div>
-												{% endfor %}
 
-
+													{% endfor %}
+												</div>
 											{% endfor %}
 
-										</div>
+										{% endfor %}
 									</div>
-
-
 								</div>
 							</div>
+
+
+							<script>
+								var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+acc[i].addEventListener("click", function () {
+this.classList.toggle("active");
+var panel = this.nextElementSibling;
+if (panel.style.display === "block") {
+panel.style.display = "none";
+} else {
+panel.style.display = "block";
+}
+});
+}
+							</script>
+
 						</div>
+
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	{{ block("Footer", "Menus/Footer.html.twig") }}
-{% endblock %}
+</div></div></div>{{ block("Footer", "Menus/Footer.html.twig") }}{% endblock %}
