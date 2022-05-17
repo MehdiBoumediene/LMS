@@ -50,27 +50,27 @@
 															</div>
 															{% for module in modules %}
 																<div class="card-body">
-																	<div id="accordion2" class="accordion-wrapper mb-3">
+																	<div id="accordion{{module.id}}" class="accordion-wrapper mb-3">
 																		<div class="card">
 																			<div id="headingOne" class="card-header">
 																				<button type="button" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
 																					<h5 class="m-0 p-0">{{module.nom}}</h5>
 																				</button>
 																			</div>
-																			
-																			<div data-parent="#accordion2" id="collapseOne1" aria-labelledby="headingOne" class="collapse" style="">
+
+																			<div data-parent="#accordion{{module.id}}" id="collapseOne1" aria-labelledby="headingOne" class="collapse" style="">
 																				<div class="card-body">
 																					<div data-parent="#accordion3" id="collapseOne1" aria-labelledby="headingOne" class="collapse" style="">
 																						<div class="card-body">
 																							{% for chapitre in module.leschapitres %}
-																								<div id="accordion3" class="accordion-wrapper mb-3">
+																								<div id="accordion{{chapitre.id}}" class="accordion-wrapper mb-3">
 																									<div class="card">
 																										<div id="headingOne" class="card-header">
 																											<button type="button" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
 																												<h5 class="m-0 p-0">{{chapitre.nom}}</h5>
 																											</button>
 																										</div>
-																										<div data-parent="#accordion3" id="collapseOne1" aria-labelledby="headingOne" class="collapse" style="">
+																										<div data-parent="#accordion{{chapitre.id}}" id="collapseOne1" aria-labelledby="headingOne" class="collapse" style="">
 																											<div class="card-body"></div>
 																										</div>
 																									</div>
