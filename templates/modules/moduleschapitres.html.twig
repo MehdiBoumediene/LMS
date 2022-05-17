@@ -33,6 +33,30 @@
 		.accordion {
 			margin: 10px;
 		}
+		.bloc {
+			background-color: #274c8d;
+			color: white;
+		}
+		.bloc:hover {
+			background-color: #274c8d;
+			color: white;
+		}
+		.module {
+			background-color: #4f70ad;
+			color: white;
+		}
+		.module:hover {
+			background-color: #4f70ad;
+			color: white;
+		}
+		.chapitre {
+			background-color: #7587a7;
+			color: white;
+		}
+		.chapitre:hover {
+			background-color: #7587a7;
+			color: white;
+		}
 	</style>
 	{{ block("MenuTop", "Menus/MenuTop.html.twig") }}
 	<div class="app-main">
@@ -46,9 +70,8 @@
 								<i class="lnr-users icon-gradient bg-strong-bliss"></i>
 							</div>
 							<div>
-								{% for module in modules %}
-									{{module.formations[0].nom}}
-								{% endfor %}
+
+								{{modules[0].formations.nom}}
 
 
 							</div>
@@ -66,14 +89,14 @@
 										{% for module in modules %}
 
 											{% for bloc in module.formations.blocs %}
-												<button class="accordion">{{bloc.nom}}</button>
+												<button class="accordion bloc">{{bloc.nom}}</button>
 												<div class="panel">
 													{% for module in modules %}
-														<button class="accordion">{{module.nom}}</button>
+														<button class="accordion module">{{module.nom}}</button>
 														<div class="panel">
 															{% for chapitre in module.leschapitres %}
 																<a href="{{path('app_leschapitres_show',{id:chapitre.id })}}">
-																	<button class="accordion">{{chapitre.nom}}</button>
+																	<button class="accordion chapitre">{{chapitre.nom}}</button>
 																	<div class="panel"></div>
 																</a>
 															{% endfor %}

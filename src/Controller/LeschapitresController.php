@@ -93,6 +93,7 @@ class LeschapitresController extends AbstractController
 
         return $this->render('modules/moduleschapitres.html.twig', [
             'modules' => $lesmodulesRepository->findBy(['formations'=>$id]),
+          
         ]);
     }
 
