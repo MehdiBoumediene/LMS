@@ -29,18 +29,18 @@
 						<div class="card-body">
 							<div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
 								<div class="row">
-									{% for module in modules %}
+									{% for module in chapitres %}
 										<div class="col-sm-4">
 											<a href="{{ path('app_modules_show', {'id': module.id}) }}">
 												<div class="mb-3 text-white card-border bg-dark card">
 													<div class="card-header">
 														<i class="header-icon lnr-screen icon-gradient bg-warm-flame"></i>
-														{{module.nom}}
+														{{module.formations.nom}}
 
 
 													</div>
 													<div class="card-body" style="padding:0px;">
-														{% for couverture in module.couvertures %}
+														{% for couverture in module.formations.couvertures %}
 															<img width="300.98" src="{{asset('uploads')}}/{{couverture.name}}">
 														{% endfor %}
 														<span style="color:white; position: relative;padding: 5px;float: left;margin-top: 0px;padding-bottom: 6px;">

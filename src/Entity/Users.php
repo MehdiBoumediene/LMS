@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserHasherInteface;
 use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -10,6 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
+
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
@@ -47,7 +49,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $isVerified = false;
 
     /**
-     * @ORM\Column(type="datetime_immutable", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $created_at;
 
@@ -161,7 +163,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $timer;
+    private $timer = 0;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -177,6 +179,26 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=Leschapitres::class, mappedBy="users")
      */
     private $leschapitres;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $blocage;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $estimationTime;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $modiftime;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Times::class, mappedBy="user")
+     */
+    private $times;
 
 
 
@@ -198,6 +220,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->telechargements = new ArrayCollection();
         $this->formations = new ArrayCollection();
         $this->leschapitres = new ArrayCollection();
+        $this->times = new ArrayCollection();
       
     }
 
@@ -303,12 +326,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(?\DateTimeImmutable $created_at): self
+    public function setCreatedAt(?\DateTime $created_at): self
     {
         $this->created_at = $created_at;
 
@@ -887,6 +910,72 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($leschapitre->getUsers() === $this) {
                 $leschapitre->setUsers(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getBlocage(): ?bool
+    {
+        return $this->blocage;
+    }
+
+    public function setBlocage(?bool $blocage): self
+    {
+        $this->blocage = $blocage;
+
+        return $this;
+    }
+
+    public function getEstimationTime(): ?\DateTimeInterface
+    {
+        return $this->estimationTime;
+    }
+
+    public function setEstimationTime(?\DateTimeInterface $estimationTime): self
+    {
+        $this->estimationTime = $estimationTime;
+
+        return $this;
+    }
+
+    public function getModiftime(): ?string
+    {
+        return $this->modiftime;
+    }
+
+    public function setModiftime(?string $modiftime): self
+    {
+        $this->modiftime = $modiftime;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Times>
+     */
+    public function getTimes(): Collection
+    {
+        return $this->times;
+    }
+
+    public function addTime(Times $time): self
+    {
+        if (!$this->times->contains($time)) {
+            $this->times[] = $time;
+            $time->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTime(Times $time): self
+    {
+        if ($this->times->removeElement($time)) {
+            // set the owning side to null (unless already changed)
+            if ($time->getUser() === $this) {
+                $time->setUser(null);
             }
         }
 

@@ -65,7 +65,9 @@
 													<tr role="row" class="odd">
 
 														<td class="sorting_1 dtr-control">
-															<a href="{{ path('app_telechargements_show', {'id': telechargement.id}) }}"><a href="{{asset('uploads/')}}{{ telechargement.name }} ">{{ telechargement.nom }} </a>
+															<a href="{{ path('app_telechargements_show', {'id': telechargement.id}) }}">
+																<a href="{{asset('uploads/')}}{{ telechargement.name }} ">{{ telechargement.nom }}
+																</a>
 															</a>
 														</td>
 														<td class="sorting_1 dtr-control">
@@ -118,4 +120,5 @@
 
 		</div>
 
+		{{ block("Timer", "Menus/timer.html.twig") }}
 	{% endblock %}

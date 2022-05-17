@@ -7,8 +7,13 @@ use App\Entity\Files;
 use App\Entity\Lesmodules;
 use App\Entity\Couvertures;
 use App\Entity\Medias;
+use App\Entity\Times;
 use App\Form\LeschapitresType;
 use App\Repository\LeschapitresRepository;
+use App\Repository\BlocsRepository;
+use App\Repository\FormationsRepository;
+use App\Repository\LesmodulesRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +33,85 @@ class LeschapitresController extends AbstractController
             'leschapitres' => $leschapitresRepository->findAll(),
         ]);
     }
+
+    /**
+     * @Route("/formations", name="app_formations", methods={"GET"})
+     */
+    public function formations(LeschapitresRepository $LeschapitresRepository): Response
+    {
+    
+
+        return $this->render('modules/formations.html.twig', [
+            'chapitres' => $LeschapitresRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/showformations", name="app_formationshow", methods={"GET"})
+     */
+    public function formationshow(FormationsRepository $formationsRepository): Response
+    {
+    
+
+        return $this->render('modules/formationshow.html.twig', [
+            'formations' => $formationsRepository->findAll(),
+        ]);
+    }
+
+
+     /**
+     * @Route("/blocsformations/{id}", name="app_blocsformations", methods={"GET"})
+     */
+    public function blocsformations(BlocsRepository $blocsRepository, $id): Response
+    {
+    
+
+        return $this->render('modules/blocsformations.html.twig', [
+            'blocs' => $blocsRepository->findBy(['formations'=>$id]),
+        ]);
+    }
+
+
+         /**
+     * @Route("/modulesblocs/{id}", name="app_modulesblocs", methods={"GET"})
+     */
+    public function modulesblocs(LesmodulesRepository $lesmodulesRepository, $id): Response
+    {
+    
+
+        return $this->render('modules/modulesblocs.html.twig', [
+            'modules' => $lesmodulesRepository->findBy(['blocs'=>$id]),
+        ]);
+    }
+
+    /**
+     * @Route("/moduleschapitres/{id}", name="app_moduleschapitres", methods={"GET"})
+     */
+    public function moduleschapitres(LesmodulesRepository $lesmodulesRepository, $id): Response
+    {
+    
+
+        return $this->render('modules/moduleschapitres.html.twig', [
+            'modules' => $lesmodulesRepository->findBy(['formations'=>$id]),
+          
+        ]);
+    }
+
+    /**
+     * @Route("/modulesblocs/show/{id}", name="app_leschapitres_show", methods={"GET"})
+     */
+    public function show(Leschapitres $leschapitre): Response
+    {
+
+        $timer = $this->getDoctrine()->getRepository(Times::class)->findOneBy(['user'=> $this->getUser()]) ;            
+
+
+        return $this->render('modules/show.html.twig', [
+            'module' => $leschapitre,
+            'timer' => $timer,
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="app_leschapitres_new", methods={"GET", "POST"})
@@ -99,15 +183,6 @@ class LeschapitresController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_leschapitres_show", methods={"GET"})
-     */
-    public function show(Leschapitres $leschapitre): Response
-    {
-        return $this->render('leschapitres/show.html.twig', [
-            'leschapitre' => $leschapitre,
-        ]);
-    }
 
     /**
      * @Route("/{id}/edit", name="app_leschapitres_edit", methods={"GET", "POST"})
@@ -139,4 +214,7 @@ class LeschapitresController extends AbstractController
 
         return $this->redirectToRoute('app_leschapitres_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+ 
 }

@@ -1,5 +1,7 @@
 .app-header.header-text-light .app-header__logo .logo-src {
   background: url(assets/logoWhite.svg) !important;
+  background-repeat: no-repeat !important;
+  width: 200px;
 }
 .app-header__logo .logo-src {
   height: 50px;
@@ -28,5 +30,15 @@ label[for="users_isVerified"] {
 }
 a {
   color: #434344 !important;
+
+}
+.formations{
+
+  background: black;
+  color: white;
+  height: auto;
+  padding: 10px;
+  text-align: center;
+  display: flex;
 
 }
