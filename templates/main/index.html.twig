@@ -22,6 +22,11 @@
 		<div class="app-main__outer">
 			<div class="app-main__inner">
 				<div class="app-page-title">
+					{% if app.user.blocage == true %}
+						<div class="alert alert-danger">Votre compte a été suspendu, veuillez contacter l'administration pour plus d'informations.</div>
+						{% else %}
+
+					{% endif %}
 					<div class="page-title-wrapper">
 						<div class="page-title-heading">
 							<div class="page-title-icon">
