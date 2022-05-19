@@ -37,7 +37,8 @@ class UsersType extends AbstractType
                 "data" => new \DateTime(),
             ])
             ->add('password', PasswordType::class,[
-                
+                'required'=>false,
+                'empty_data' => ''
             ])
             ->add('isVerified',CheckboxType::class,[
                 'label' => 'Compte Activé', 

@@ -39,27 +39,8 @@ class TelechargementsType extends AbstractType
               
 
             ])
-            ->add('classe', EntityType::class, [
-                'class' => Classes::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.nom', 'ASC');
-                },
-                'choice_label' => 'nom',
-                'multiple' => false,
-                
-            ])
-
-            ->add('module', EntityType::class, [
-                'class' => Modules::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.nom', 'ASC');
-                },
-                'choice_label' => 'nom',
-                'multiple' => false,
-                
-            ])
+      
+            
 
 
         ;

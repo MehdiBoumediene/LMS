@@ -50,8 +50,7 @@
 												<tr role="row">
 
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">fichier</th>
-													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Classe</th>
-													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Module</th>
+
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Date de création</th>
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 233.2px;" aria-label="Position: activate to sort column ascending">Créé par</th>
 													<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 110.2px;" aria-label="Start date: activate to sort column ascending">actions</th>
@@ -70,12 +69,8 @@
 																</a>
 															</a>
 														</td>
-														<td class="sorting_1 dtr-control">
-															<a href="{{ path('app_classes_show', {'id': telechargement.classe.id}) }}">{{ telechargement.classe.nom }}</a>
-														</td>
-														<td class="sorting_1 dtr-control">
-															<a href="{{ path('app_modules_show', {'id': telechargement.module.id}) }}">{{ telechargement.module.nom }}</a>
-														</td>
+
+
 														<td class="sorting_1 dtr-control">
 
 															<a href="{{ path('app_telechargements_show', {'id': telechargement.id}) }}">{{ telechargement.createdAt|date('d-m-Y H:i') }}</a>
