@@ -1,65 +1,64 @@
-<form method="POST" action="{{ path('app_leschapitres_new') }}" enctype="multipart/form-data">
-	<div class="form-row">
-		<div class="col-md-3">
-			{{ form_row(form.nom,{'attr': {'class': 'form-control'}}) }}
-			{{ form_errors(form.nom) }}
-		</div>
-
-		<div class="col-md-3">
-
-			{{ form_row(form.formations,{'attr': {'class': 'form-control'}}) }}
-			{{ form_errors(form.formations) }}
-		</div>
-		<div class="col-md-3">
-
-			{{ form_row(form.lesmodules,{'attr': {'class': 'form-control'}}) }}
-			{{ form_errors(form.lesmodules) }}
-		</div>
-
-		<div class="col-md-3">
-
-			{{ form_row(form.bloc,{'attr': {'class': 'form-control'}}) }}
-			{{ form_errors(form.bloc) }}
-		</div>
-
-		<div class="col-md-3">
-
-
-			{{ form_row(form.temps,{'attr': {'class': 'form-control'}}) }}
-			{{ form_errors(form.temps) }}
-		</div>
-
-		<div class="col-md-6">
-			{{ form_row(form.description,{'attr': {'class': 'form-control'}}) }}
-			{{ form_errors(form.description) }}
-		</div>
-	</div>
-	<br>
-	<div class="row">
-
-		<div class="col-md-3">
-
-			{{ form_label(form.files, 'Documents', {'label_attr': {'class': 'foo'}}) }}
-
-			{{ form_row(form.files,{'attr': {'class': ''}}) }}
-			{{ form_errors(form.files) }}
-		</div>
-		<div class="col-md-3">
-			{{ form_label(form.files, 'Videos', {'label_attr': {'class': 'foo'}}) }}
-
-			{{ form_row(form.medias,{'attr': {'class': ''}}) }}
-			{{ form_errors(form.medias) }}
-		</div>
-
-
+{{ form_start(form) }}
+<div class="form-row">
+	<div class="col-md-3">
+		{{ form_row(form.nom,{'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.nom) }}
 	</div>
 
-	{{ form_rest(form) }}
+	<div class="col-md-3">
 
-	<br>
-	<br>
-	<br>
-	<button class="mt-1 btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
-	ou
-	<a href="{{ path('app_leschapitres_index') }}">Retour à la liste</a>
-</form>
+		{{ form_row(form.formations,{'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.formations) }}
+	</div>
+	<div class="col-md-3">
+
+		{{ form_row(form.lesmodules,{'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.lesmodules) }}
+	</div>
+
+	<div class="col-md-3">
+
+		{{ form_row(form.bloc,{'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.bloc) }}
+	</div>
+
+	<div class="col-md-3">
+
+
+		{{ form_row(form.temps,{'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.temps) }}
+	</div>
+
+	<div class="col-md-6">
+		{{ form_row(form.description,{'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.description) }}
+	</div>
+</div>
+<br>
+<div class="row">
+
+	<div class="col-md-3">
+
+		{{ form_label(form.files, 'Documents', {'label_attr': {'class': 'foo'}}) }}
+
+		{{ form_row(form.files,{'attr': {'class': ''}}) }}
+		{{ form_errors(form.files) }}
+	</div>
+	<div class="col-md-3">
+		{{ form_label(form.files, 'Videos', {'label_attr': {'class': 'foo'}}) }}
+
+		{{ form_row(form.medias,{'attr': {'class': ''}}) }}
+		{{ form_errors(form.medias) }}
+	</div>
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+<button class="mt-1 btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+ou
+<a href="{{ path('app_leschapitres_index') }}">Retour à la liste</a>
+{{ form_end(form) }}

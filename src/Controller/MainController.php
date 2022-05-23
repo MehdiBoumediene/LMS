@@ -25,7 +25,7 @@ class MainController extends AbstractController
 
 
     /**
-     * @Route("/gestion/calendrier", name="app_gestion_calendrier")
+     * @Route("/admin/calendrier", name="app_gestion_calendrier")
      */
     public function calendrier(CalendrierRepository $calendrier): Response
     {

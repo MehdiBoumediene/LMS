@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/telechargements")
+ * @Route("/admin/telechargements")
  */
 class TelechargementsController extends AbstractController
 {
