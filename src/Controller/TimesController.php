@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/times")
+ * @Route("/admin/times")
  */
 class TimesController extends AbstractController
 {

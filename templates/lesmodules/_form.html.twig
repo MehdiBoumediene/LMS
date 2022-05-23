@@ -1,29 +1,27 @@
-<form method="POST" action="{{ path('app_lesmodules_new') }}" enctype="multipart/form-data">
-	<div class="form-row">
-		<div class="col-md-4">
-			{{ form_row(form.nom,{'attr': {'class': 'form-control'}}) }}
-			{{ form_errors(form.nom) }}
-		</div>
-		<div class="col-md-5">
-			{{ form_row(form.formations,{'attr': {'class': 'form-control'}}) }}
-			{{ form_errors(form.formations) }}
-		</div>
-
-		<div class="col-md-3">
-			{{ form_row(form.blocs,{'attr': {'class': 'form-control'}}) }}
-			{{ form_errors(form.blocs) }}
-		</div>
-
+{{ form_start(form) }}
+<div class="form-row">
+	<div class="col-md-4">
+		{{ form_row(form.nom,{'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.nom) }}
 	</div>
-	<br>
+	<div class="col-md-5">
+		{{ form_row(form.formations,{'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.formations) }}
+	</div>
 
+	<div class="col-md-3">
+		{{ form_row(form.blocs,{'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.blocs) }}
+	</div>
 
-	{{ form_rest(form) }}
+</div>
+<br>
 
-	<br>
-	<br>
-	<br>
-	<button class="mt-1 btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
-	ou
-	<a href="{{ path('app_lesmodules_index') }}">Retour à la liste</a>
-</form>
+<br>
+<br>
+<br>
+<button class="mt-1 btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+ou
+<a href="{{ path('app_lesmodules_index') }}">Retour à la liste</a>
+
+{{ form_end(form) }}
