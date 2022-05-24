@@ -113,9 +113,9 @@
 											<div class="widget-chart-flex align-items-center">
 												<div style="font-size: 16px;font-weight: normal;">
 
-													{% set secondes = (app.user.timer / 1000) % 60 %}
-													{% set minutes = (app.user.timer / (1000*60)) % 60 %}
-													{% set heurs = (app.user.timer / (1000*60*60)) % 24 %}
+													{% set secondes = (app.user.TimePlateforme / 1000) % 60 %}
+													{% set minutes = (app.user.TimePlateforme / (1000*60)) % 60 %}
+													{% set heurs = (app.user.TimePlateforme / (1000*60*60)) % 24 %}
 
 
 													<span class="heur" style="display:none;">{{heurs}}:</span>
