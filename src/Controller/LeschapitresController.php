@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Leschapitres;
+use App\Entity\Users;
 use App\Entity\Files;
 use App\Entity\Lesmodules;
 use App\Entity\Couvertures;
@@ -103,7 +104,7 @@ class LeschapitresController extends AbstractController
     public function show(Leschapitres $leschapitre): Response
     {
 
-        $timer = $this->getDoctrine()->getRepository(Times::class)->findOneBy(['user'=> $this->getUser()]) ;            
+        $timer = $this->getDoctrine()->getRepository(Users::class)->findOneBy(['user'=> $this->getUser()]) ;            
 
 
         return $this->render('modules/show.html.twig', [

@@ -131,9 +131,7 @@ class MainController extends AbstractController
     {
     
         $timer = $request->query->get('timer');
-        $heur = $request->query->get('heur');
-        $minutes = $request->query->get('minutes');
-        $secondes = $request->query->get('secondes');
+ 
       
         $response = new JsonResponse();
 
@@ -145,22 +143,13 @@ class MainController extends AbstractController
             
             $qb = $em->createQueryBuilder();
             $q = $qb->update('App:Users', 'u')
-                ->set('u.timer','u.timer+?1')
+                ->set('u.time_plateforme','u.time_plateforme+?1')
+                ->where('u.user = ?2')
                 ->setParameter(1, $timer)
+                ->setParameter(2, $this->getUser())
                 ->getQuery();
             $p = $q->execute();
 
-
-            $qb = $em->createQueryBuilder();
-            $q = $qb->update('App:Times', 'u')
-                ->set('u.heur','?1')
-                ->set('u.minutes','?2')
-                ->set('u.secondes','?3')
-                ->setParameter(1, $heur)
-                ->setParameter(2, $minutes)
-                ->setParameter(3, $secondes)
-                ->getQuery();
-            $p = $q->execute();
                 
         }
 
@@ -181,41 +170,28 @@ class MainController extends AbstractController
     {
     
         $timer = $request->query->get('timer');
-        $heur = $request->query->get('heur');
-        $minutes = $request->query->get('minutes');
-        $secondes = $request->query->get('secondes');
-      
+
         $response = new JsonResponse();
 
      
 
-        $user = $this->getDoctrine()->getRepository(Times::class)->findOneBy(['user'=> $this->getUser()]) ;            
+        $user = $this->getDoctrine()->getRepository(Users::class)->findOneBy(['user'=> $this->getUser()]) ;            
         if( $user)
         {
             
             $qb = $em->createQueryBuilder();
-            $q = $qb->update('App:Times', 'u')
+            $q = $qb->update('App:Users', 'u')
                 ->set('u.timer','u.timer+?1')
+                ->where('u.user = ?2')
                 
                 ->setParameter(1, $timer)
+                ->setParameter(2, $this->getUser())
+             
              
                
                 ->getQuery();
             $p = $q->execute();
 
-
-            $qb = $em->createQueryBuilder();
-            $q = $qb->update('App:Times', 'u')
-                ->set('u.heur','?1')
-                ->set('u.minutes','?2')
-                ->set('u.secondes','?3')
-              
-                ->setParameter(1, $heur)
-                ->setParameter(2, $minutes)
-                ->setParameter(3, $secondes)
-               
-                ->getQuery();
-            $p = $q->execute();
                 
         }
 

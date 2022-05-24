@@ -166,9 +166,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $timer = 0;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $time_plateforme;
+    private $time_plateforme = 0;
 
     /**
      * @ORM\ManyToMany(targetEntity=Formations::class, inversedBy="users")
@@ -850,12 +850,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getTimePlateforme(): ?\DateTimeInterface
+    public function getTimePlateforme(): ?string
     {
         return $this->time_plateforme;
     }
 
-    public function setTimePlateforme(?\DateTimeInterface $time_plateforme): self
+    public function setTimePlateforme(?string $time_plateforme): self
     {
         $this->time_plateforme = $time_plateforme;
 
